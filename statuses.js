@@ -209,258 +209,190 @@ exports.BattleStatuses = {
 		}
 	},
 
-		// weather
+		// terrains
 
-	// weather is implemented here since it's so important to the game
+	// weather is implemented here since it's so important to the game but is still buggy
 
-	raindance: {
-		effectType: 'Weather',
-		duration: 5,
-		durationCallback: function (source, effect) {
-			if (source && source.hasItem('damprock')) {
-				return 8;
-			}
-			return 5;
-		},
-		onBasePower: function (basePower, attacker, defender, move) {
-			if (move.type === 'Water') {
-				this.debug('rain water boost');
-				return this.chainModify(1.5);
-			}
-			if (move.type === 'Fire') {
-				this.debug('rain fire suppress');
-				return this.chainModify(0.5);
-			}
-		},
-		onStart: function (battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
-				this.effectData.duration = 0;
-				this.add('-weather', 'RainDance', '[from] ability: ' + effect, '[of] ' + source);
-			} else {
-				this.add('-weather', 'RainDance');
-			}
-		},
-		onResidualOrder: 1,
-		onResidual: function () {
-			this.add('-weather', 'RainDance', '[upkeep]');
-			this.eachEvent('Weather');
-		},
-		onEnd: function () {
-			this.add('-weather', 'none');
+"desert": {
+	accuracy: true,
+	basePower: 0,
+	category: "Status",
+	desc: "Makes the field a desert. Ground-, Rock-, and Steel-types gain 10% in Defense and Special Defense. Ground-types gain 10% Attack. Flying lose 10% in Speed. Water-type moves become Water/Ground Type. Lasts for 8 turns.",
+	shortDesc: "Field becomes a desert. Ground, Rock, and Steel gain 10% in Def and Sp. Def. Ground-types get 10% Atk boosts. Flying-types lose 10% speed. Water moves become Water/Ground. Lasts 8 turns.",
+	id: "desert",
+	isNonstandard: true,
+	isViable: true,
+	name: "Desert",
+	pp: 8,
+	priority: 0,
+	onTry: function (target, source) {
+		if (this.isWeather(['desolateland', 'primordialsea', 'deltastream'])) {
+			this.add('-fail', source, 'move: Desert', '[from]: ' + this.effectiveWeather());
+			return null;
 		}
 	},
-	primordialsea: {
-		effectType: 'Weather',
-		duration: 0,
-		onTryMove: function (target, source, effect) {
-			if (effect.type === 'Fire' && effect.category !== 'Status') {
-				this.debug('Primordial Sea fire suppress');
-				this.add('-fail', source, effect, '[from] Primordial Sea');
-				return null;
+	onTypings: function (pokemon, move, type, typeMod) {
+		if (pokemon.type === 'Ground' || pokemon.type === 'Rock' || pokemon.type === 'Steel') {
+			boosts: {
+				def: 1,
+				spd: 1
 			}
-		},
-		onBasePower: function (basePower, attacker, defender, move) {
-			if (move.type === 'Water') {
-				this.debug('Rain water boost');
-				return this.chainModify(1.5);
+		} else if (pokemon.type === 'Ground') {
+			boosts: {
+				atk: 1
 			}
-		},
-		onSetWeather: function (target, source, weather) {
-			if (!(weather.id in {desolateland:1, primordialsea:1, deltastream:1})) return false;
-		},
-		onStart: function () {
-			this.add('-weather', 'PrimordialSea');
-		},
-		onResidualOrder: 1,
-		onResidual: function () {
-			this.add('-weather', 'PrimordialSea', '[upkeep]');
-			this.eachEvent('Weather');
-		},
-		onEnd: function () {
-			this.add('-weather', 'none');
+		} else if (pokemon.type === 'Flying') {
+			boosts: {
+				spe: -1
+			}
+		} else if (move.type === 'Water') {
+			return typeMod + this.getEffectiveness('Ground', type);
 		}
 	},
-	sunnyday: {
-		effectType: 'Weather',
-		duration: 5,
-		durationCallback: function (source, effect) {
-			if (source && source.hasItem('heatrock')) {
-				return 8;
-			}
-			return 5;
-		},
-		onBasePower: function (basePower, attacker, defender, move) {
-			if (move.type === 'Fire') {
-				this.debug('Sunny Day fire boost');
-				return this.chainModify(1.5);
-			}
-			if (move.type === 'Water') {
-				this.debug('Sunny Day water suppress');
-				return this.chainModify(0.5);
-			}
-		},
-		onStart: function (battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
-				this.effectData.duration = 0;
-				this.add('-weather', 'SunnyDay', '[from] ability: ' + effect, '[of] ' + source);
-			} else {
-				this.add('-weather', 'SunnyDay');
-			}
-		},
-		onImmunity: function (type) {
-			if (type === 'frz') return false;
-		},
-		onResidualOrder: 1,
-		onResidual: function () {
-			this.add('-weather', 'SunnyDay', '[upkeep]');
-			this.eachEvent('Weather');
-		},
-		onEnd: function () {
-			this.add('-weather', 'none');
+	secondary: false,
+	target: "all",
+	type: "Ground"
+},
+"glacier": {
+	accuracy: true,
+	basePower: 0,
+	category: "Status",
+	desc: "Makes the field a glacier. Ice types gain 20% to both defense stats. Water-type moves become Water/Ice-type moves. Lasts for 8 turns.",
+	shortDesc: "Field becomes glacier. Ice types get 20% to defense stats. Water moves become Water/Ice. Lasts 8 turns.",
+	id: "glacier",
+	isNonstandard: true,
+	isViable: true,
+	name: "Glacier",
+	pp: 8,
+	priority: 0,
+	onTry: function (target, source) {
+		if (this.isWeather(['desolateland', 'primordialsea', 'deltastream'])) {
+			this.add('-fail', source, 'move: Desert', '[from]: ' + this.effectiveWeather());
+			return null;
 		}
 	},
-	desolateland: {
-		effectType: 'Weather',
-		duration: 0,
-		onTryMove: function (target, source, effect) {
-			if (effect.type === 'Water' && effect.category !== 'Status') {
-				this.debug('Desolate Land water suppress');
-				this.add('-fail', source, effect, '[from] Desolate Land');
-				return null;
+	onEffectiveness: function (typeMod, type, move, pokemon) {
+		if (pokemon.type === 'Ice') {
+			boosts: {
+				def: 2,
+				spd: 2
 			}
-		},
-		onBasePower: function (basePower, attacker, defender, move) {
-			if (move.type === 'Fire') {
-				this.debug('Sunny Day fire boost');
-				return this.chainModify(1.5);
-			}
-		},
-		onSetWeather: function (target, source, weather) {
-			if (!(weather.id in {desolateland:1, primordialsea:1, deltastream:1})) return false;
-		},
-		onStart: function () {
-			this.add('-weather', 'DesolateLand');
-		},
-		onImmunity: function (type) {
-			if (type === 'frz') return false;
-		},
-		onResidualOrder: 1,
-		onResidual: function () {
-			this.add('-weather', 'DesolateLand', '[upkeep]');
-			this.eachEvent('Weather');
-		},
-		onEnd: function () {
-			this.add('-weather', 'none');
+		} else if (move.type === 'Water') {
+			return typeMod + this.getEffectiveness('Ice', type);
 		}
 	},
-	sandstorm: {
-		effectType: 'Weather',
-		duration: 5,
-		durationCallback: function (source, effect) {
-			if (source && source.hasItem('smoothrock')) {
-				return 8;
-			}
-			return 5;
-		},
-		// This should be applied directly to the stat before any of the other modifiers are chained
-		// So we give it increased priority.
-		onModifySpDPriority: 10,
-		onModifySpD: function (spd, pokemon) {
-			if (pokemon.hasType('Rock') && this.isWeather('sandstorm')) {
-				return this.modify(spd, 1.5);
-			}
-		},
-		onStart: function (battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
-				this.effectData.duration = 0;
-				this.add('-weather', 'Sandstorm', '[from] ability: ' + effect, '[of] ' + source);
-			} else {
-				this.add('-weather', 'Sandstorm');
-			}
-		},
-		onResidualOrder: 1,
-		onResidual: function () {
-			this.add('-weather', 'Sandstorm', '[upkeep]');
-			if (this.isWeather('sandstorm')) this.eachEvent('Weather');
-		},
-		onWeather: function (target) {
-			this.damage(target.maxhp / 16);
-		},
-		onEnd: function () {
-			this.add('-weather', 'none');
+	secondary: false,
+	target: "all",
+	type: "Ice"
+},
+"meadow": {
+	accuracy: true,
+	basePower: 0,
+	category: "Status",
+	desc: "Makes the field a meadow. Bug-types gain 10% in Defense and Special Defense. Grass-types gain 25% Attack. Flying gain 10% in Speed. Water-type moves become Water/Grass Type. Lasts for 8 turns.",
+	shortDesc: "Field becomes meadow. Bug gain 10% in Def and Sp. Def. Grass-types get 25% Atk. Flying-types gain 10% speed. Water moves become Water/Grass. Lasts 8 turns.",
+	id: "meadow",
+	isNonstandard: true,
+	isViable: true,
+	name: "Meadow",
+	pp: 8,
+	priority: 0,
+	onTry: function (target, source) {
+		if (this.isWeather(['desolateland', 'primordialsea', 'deltastream'])) {
+			this.add('-fail', source, 'move: Meadow', '[from]: ' + this.effectiveWeather());
+			return null;
 		}
 	},
-	hail: {
-		effectType: 'Weather',
-		duration: 5,
-		durationCallback: function (source, effect) {
-			if (source && source.hasItem('icyrock')) {
-				return 8;
+	onTypings: function (pokemon, move, type, typeMod) {
+		if (pokemon.type === 'Bug') {
+			boosts: {
+				def: 1,
+				spd: 1
 			}
-			return 5;
-		},
-		onStart: function (battle, source, effect) {
-			if (effect && effect.effectType === 'Ability' && this.gen <= 5) {
-				this.effectData.duration = 0;
-				this.add('-weather', 'Hail', '[from] ability: ' + effect, '[of] ' + source);
-			} else {
-				this.add('-weather', 'Hail');
+		} else if (pokemon.type === 'Grass') {
+			boosts: {
+				atk: 3
 			}
-		},
-		onResidualOrder: 1,
-		onResidual: function () {
-			this.add('-weather', 'Hail', '[upkeep]');
-			if (this.isWeather('hail')) this.eachEvent('Weather');
-		},
-		onWeather: function (target) {
-			this.damage(target.maxhp / 16);
-		},
-		onEnd: function () {
-			this.add('-weather', 'none');
+		} else if (pokemon.type === 'Flying') {
+			boosts: {
+				spe: 1
+			}
+		} else if (move.type === 'Water') {
+			return typeMod + this.getEffectiveness('Grass', type);
 		}
 	},
-	deltastream: {
-		effectType: 'Weather',
-		duration: 0,
-		onEffectiveness: function (typeMod, target, type, move) {
-			if (move && move.effectType === 'Move' && type === 'Flying' && typeMod > 0) {
-				this.add('-activate', '', 'deltastream');
-				return 0;
-			}
-		},
-		onSetWeather: function (target, source, weather) {
-			if (!(weather.id in {desolateland:1, primordialsea:1, deltastream:1})) return false;
-		},
-		onStart: function () {
-			this.add('-weather', 'DeltaStream');
-		},
-		onResidualOrder: 1,
-		onResidual: function () {
-			this.add('-weather', 'DeltaStream', '[upkeep]');
-			this.eachEvent('Weather');
-		},
-		onEnd: function () {
-			this.add('-weather', 'none');
+	secondary: false,
+	target: "all",
+	type: "Grass"
+},
+"ocean": {
+	accuracy: true,
+	basePower: 0,
+	category: "Status",
+	desc: "Makes the field an ocean. Water-types gain 10% in Defense and Special Defense. Fire lose 20% in Defense. Lasts for 8 turns.",
+	shortDesc: "Field becomes ocean. Water gain 10% in Def and Sp. Def. Fire-types lose 20% Defense. Lasts 8 turns.",
+	id: "ocean",
+	isNonstandard: true,
+	isViable: true,
+	name: "Ocean",
+	pp: 8,
+	priority: 0,
+	onTry: function (target, source) {
+		if (this.isWeather(['desolateland', 'primordialsea', 'deltastream'])) {
+			this.add('-fail', source, 'move: Ocean', '[from]: ' + this.effectiveWeather());
+			return null;
 		}
 	},
-
-	arceus: {
-		// Arceus's actual typing is implemented here
-		// Arceus's true typing for all its formes is Normal, and it's only
-		// Multitype that changes its type, but its formes are specified to
-		// be their corresponding type in the Pokedex, so that needs to be
-		// overridden. This is mainly relevant for Hackmons and Balanced
-		// Hackmons.
-		onSwitchInPriority: 101,
-		onSwitchIn: function (pokemon) {
-			var type = 'Normal';
-			if (pokemon.ability === 'multitype') {
-				type = this.runEvent('Plate', pokemon);
-				if (!type || type === true) {
-					type = 'Normal';
-				}
+	onTypings: function (pokemon, move) {
+		if (pokemon.type === 'Water') {
+			boosts: {
+				def: 1,
+				spd: 1
 			}
-			pokemon.setType(type, true);
+		} else if (pokemon.type === 'Fire') {
+			boosts: {
+				def: -2
+			}
 		}
-	}
+	},
+	secondary: false,
+	target: "all",
+	type: "Water"
+},
+"pollutedlandscape": {
+	accuracy: true,
+	basePower: 0,
+	category: "Status",
+	desc: "Makes the field a polluted landscape. Dark-types gain 10% in Defense and Special Defense. Poison-types gain 25% in Special Attack. Water-type moves become Water/Poison Type. Lasts for 8 turns.",
+	shortDesc: "Field becomes polluted landscape. Dark gain 10% in Def and Sp. Def. Poison-types get 25% Sp. Atk. Water moves become Water/Poison. Lasts 8 turns.",
+	id: "pollutedlandscape",
+	isNonstandard: true,
+	isViable: true,
+	name: "Polluted Landscape",
+	pp: 8,
+	priority: 0,
+	onTry: function (target, source) {
+		if (this.isWeather(['desolateland', 'primordialsea', 'deltastream'])) {
+			this.add('-fail', source, 'move: Polluted Landscape', '[from]: ' + this.effectiveWeather());
+			return null;
+		}
+	},
+	onTypings: function (pokemon, move, type, typeMod) {
+		if (pokemon.type === 'Dark') {
+			boosts: {
+				def: 1,
+				spd: 1
+			}
+		} else if (pokemon.type === 'Poison') {
+			boosts: {
+				spa: 3
+			}
+		} else if (move.type === 'Water') {
+			return typeMod + this.getEffectiveness('Poison', type);
+		}
+	},
+	secondary: false,
+	target: "all",
+	type: "Poison"
+}
 };
