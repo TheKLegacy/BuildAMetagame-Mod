@@ -27,13 +27,6 @@ exports.BattleStatuses = {
 			if (pokemon.ability !== 'quickfeet') {
 				return this.chain(speMod, 0.25);
 			}
-		},
-		onBeforeMovePriority: 1,
-		onBeforeMove: function (pokemon) {
-			if (this.random(4) === 0) {
-				this.add('cant', pokemon, 'par');
-				return false;
-			}
 		}
 	},
 	slp: {
@@ -59,36 +52,6 @@ exports.BattleStatuses = {
 				return;
 			}
 			return false;
-		}
-	},
-	frz: {
-		effectType: 'Status',
-		onStart: function (target) {
-			this.add('-status', target, 'frz');
-			if (target.species === 'Shaymin-Sky' && target.baseTemplate.species === target.species) {
-				var template = this.getTemplate('Shaymin');
-				target.formeChange(template);
-				target.baseTemplate = template;
-				target.setAbility(template.abilities['0']);
-				target.baseAbility = target.ability;
-				target.details = template.species + (target.level === 100 ? '' : ', L' + target.level) + (target.gender === '' ? '' : ', ' + target.gender) + (target.set.shiny ? ', shiny' : '');
-				this.add('detailschange', target, target.details);
-				this.add('message', target.species + " has reverted to Land Forme! (placeholder)");
-			}
-		},
-		onBeforeMovePriority: 10,
-		onBeforeMove: function (pokemon, target, move) {
-			if (move.thawsUser || this.random(5) === 0) {
-				pokemon.cureStatus();
-				return;
-			}
-			this.add('cant', pokemon, 'frz');
-			return false;
-		},
-		onHit: function (target, source, move) {
-			if (move.thawsTarget || move.type === 'Fire' && move.category !== 'Status') {
-				target.cureStatus();
-			}
 		}
 	},
 	psn: {
@@ -120,43 +83,6 @@ exports.BattleStatuses = {
 				this.effectData.stage++;
 			}
 			this.damage(this.clampIntRange(pokemon.maxhp / 16, 1) * this.effectData.stage);
-		}
-	},
-	confusion: {
-		// this is a volatile status
-		onStart: function (target, source, sourceEffect) {
-			var result = this.runEvent('TryConfusion', target, source, sourceEffect);
-			if (!result) return result;
-			this.add('-start', target, 'confusion');
-			this.effectData.time = this.random(2, 6);
-		},
-		onEnd: function (target) {
-			this.add('-end', target, 'confusion');
-		},
-		onBeforeMovePriority: 3,
-		onBeforeMove: function (pokemon) {
-			pokemon.volatiles.confusion.time--;
-			if (!pokemon.volatiles.confusion.time) {
-				pokemon.removeVolatile('confusion');
-				return;
-			}
-			this.add('-activate', pokemon, 'confusion');
-			if (this.random(2) === 0) {
-				return;
-			}
-			this.directDamage(this.getDamage(pokemon, pokemon, 40));
-			return false;
-		}
-	},
-	flinch: {
-		duration: 1,
-		onBeforeMovePriority: 8,
-		onBeforeMove: function (pokemon) {
-			if (!this.runEvent('Flinch', pokemon)) {
-				return;
-			}
-			this.add('cant', pokemon, 'flinch');
-			return false;
 		}
 	},
 	trapped: {
@@ -199,34 +125,6 @@ exports.BattleStatuses = {
 			pokemon.tryTrap();
 		}
 	},
-	lockedmove: {
-		// Outrage, Thrash, Petal Dance...
-		duration: 2,
-		onResidual: function (target) {
-			if (target.status === 'slp') {
-				// don't lock, and bypass confusion for calming
-				delete target.volatiles['lockedmove'];
-			}
-			this.effectData.trueDuration--;
-		},
-		onStart: function (target, source, effect) {
-			this.effectData.trueDuration = this.random(2, 4);
-			this.effectData.move = effect.id;
-		},
-		onRestart: function () {
-			if (this.effectData.trueDuration >= 2) {
-				this.effectData.duration = 2;
-			}
-		},
-		onEnd: function (target) {
-			if (this.effectData.trueDuration > 1) return;
-			this.add('-end', target, 'rampage');
-			target.addVolatile('confusion');
-		},
-		onLockMove: function (pokemon) {
-			return this.effectData.move;
-		}
-	},
 	twoturnmove: {
 		// Skull Bash, SolarBeam, Sky Drop...
 		duration: 2,
@@ -265,73 +163,6 @@ exports.BattleStatuses = {
 				if (moves[i].id !== this.effectData.move) {
 					pokemon.disableMove(moves[i].id, false, this.effectData.sourceEffect);
 				}
-			}
-		}
-	},
-	mustrecharge: {
-		duration: 2,
-		onBeforeMovePriority: 11,
-		onBeforeMove: function (pokemon) {
-			this.add('cant', pokemon, 'recharge');
-			pokemon.removeVolatile('mustrecharge');
-			return false;
-		},
-		onLockMove: 'recharge'
-	},
-	futuremove: {
-		// this is a side condition
-		onStart: function (side) {
-			this.effectData.positions = [];
-			for (var i = 0; i < side.active.length; i++) {
-				this.effectData.positions[i] = null;
-			}
-		},
-		onResidualOrder: 3,
-		onResidual: function (side) {
-			var finished = true;
-			for (var i = 0; i < side.active.length; i++) {
-				var posData = this.effectData.positions[i];
-				if (!posData) continue;
-
-				posData.duration--;
-
-				if (posData.duration > 0) {
-					finished = false;
-					continue;
-				}
-
-				// time's up; time to hit! :D
-				var target = side.foe.active[posData.targetPosition];
-				var move = this.getMove(posData.move);
-				if (target.fainted) {
-					this.add('-hint', '' + move.name + ' did not hit because the target is fainted.');
-					this.effectData.positions[i] = null;
-					continue;
-				}
-
-				this.add('-end', target, 'move: ' + move.name);
-				target.removeVolatile('Protect');
-				target.removeVolatile('Endure');
-
-				if (typeof posData.moveData.affectedByImmunities === 'undefined') {
-					posData.moveData.affectedByImmunities = true;
-				}
-
-				if (target.hasAbility('wonderguard') && this.gen > 5) {
-					this.debug('Wonder Guard immunity: ' + move.id);
-					if (target.runEffectiveness(move) <= 0) {
-						this.add('-activate', target, 'ability: Wonder Guard');
-						this.effectData.positions[i] = null;
-						return null;
-					}
-				}
-
-				this.moveHit(target, posData.source, move, posData.moveData);
-
-				this.effectData.positions[i] = null;
-			}
-			if (finished) {
-				side.removeSideCondition('futuremove');
 			}
 		}
 	},
