@@ -4,7 +4,7 @@ The Repository for the BAM mod for Pokemon Showdown. If you want to add this on 
 
 Add the following to formats.js:
 
-{
+	{
 		name: "BAM",
 		section: "Other Metagames",
 
