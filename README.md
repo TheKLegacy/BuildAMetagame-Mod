@@ -17,5 +17,5 @@ Current version: Pre-Alpha (v0.001)
 
 ReadMe by K legacy
 
-For support visit here: bam.psim.us or here: http://projectbam.proboards.com/
+For support visit here: http://bam.psim.us/ or here: http://projectbam.proboards.com/
          
