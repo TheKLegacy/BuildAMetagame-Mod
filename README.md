@@ -8,7 +8,7 @@ Add the following to formats.js:
 		name: "BAM",
 		section: "Other Metagames",
 
-		ruleset: ['Sleep Clause Mod', 'Species Clause'],
+		ruleset: ['Sleep Clause Mod', 'Species Clause','BAM'],
 		banlist: ['Ubers','OU','UU','RU','NU','PU','NF','LC','CAP'] 
 	},
 	
