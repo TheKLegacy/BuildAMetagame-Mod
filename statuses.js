@@ -145,6 +145,7 @@ exports.BattleStatuses = {
 			return this.effectData.targetLoc;
 		}
 	},
+	//Hi bandi
 	choicelock: {
 		onStart: function (pokemon) {
 			if (!this.activeMove.id || this.activeMove.sourceEffect && this.activeMove.sourceEffect !== this.activeMove.id) return false;
@@ -209,9 +210,9 @@ exports.BattleStatuses = {
 		}
 	},
 
-		// terrains
+		// terrains - becuase weather is too meta 
 
-	// weather is implemented here since it's so important to the game but is still buggy
+	// terrains is implemented here since it's so important to the game but is still buggy
 
 "desert": {
 	accuracy: true,
