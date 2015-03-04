@@ -12,7 +12,7 @@ Add the following to formats.js:
 		banlist: ['Ubers','OU','UU','RU','NU','PU','NF','LC','CAP'] 
 	},
 	
-This is a mod for Pokemon Showdown by Zarel. This mod was founded by Piexplode and was coded and created by the staff http://pastebin.com/SDfiKryQ
+This is a mod for Pokemon Showdown by Zarel. This mod was founded by Piexplode and was coded and created by the staff http://pastebin.com/7u5RTZ2h
 Current version: Pre-Alpha (v0.001)
 
 ReadMe by K legacy
