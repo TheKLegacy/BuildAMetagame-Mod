@@ -124,10 +124,6 @@ pandoze: {
 	num: -805,
 	species: "Pandoze",
 	types: ["Normal"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 140,
 		atk: 57,
@@ -148,10 +144,6 @@ apaflite: {
 	num: -806,
 	species: "Apaflite",
 	types: ["Normal"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 75,
 		atk: 140,
@@ -172,10 +164,6 @@ dendurus: {
 	num: -807,
 	species: "Dendurus",
 	types: ["Rock", "Ground"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 106,
 		atk: 112,
@@ -197,10 +185,6 @@ bandirto: {
 	num: -808,
 	species: "Bandirto",
 	types: ["Ground", "Dark"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 40,
 		atk: 110,
@@ -222,10 +206,6 @@ tiflectum: {
 	num: -810,
 	species: "Tiflectum",
 	types: ["Steel"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 119,
 		atk: 45,
@@ -247,10 +227,6 @@ sinder: {
 	num: -811,
 	species: "Sinder",
 	types: ["Fire"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 70,
 		atk: 65,
@@ -270,10 +246,6 @@ sinder: {
 springfest: {
 	num: -813,
 	species: "Springfest",
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 90,
 		atk: 70,
@@ -315,10 +287,6 @@ skulprit: {
 	num: -815,
 	species: "Skulprit",
 	types: ["Ghost"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 160,
 		atk: 112,
@@ -340,10 +308,6 @@ swelter: {
 	num: -818,
 	species: "Swelter",
 	types: ["Ice", "Fire"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 90,
 		atk: 40,
@@ -386,10 +350,6 @@ slimurk: {
 	num: -820,
 	species: "Slimurk",
 	types: ["Poison", "Dark"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 60,
 		atk: 125,
@@ -436,10 +396,6 @@ ogre: {
 	num: -822,
 	species: "Ogre",
 	types: ["Water", "Poison"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 90,
 		atk: 100,
@@ -460,10 +416,6 @@ name: {
 	num: -823,
 	species: "Name",
 	types: ["Water", "Dragon"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 50,
 		atk: 105,
@@ -485,10 +437,6 @@ name: {
 	num: -824,
 	species: "Name",
 	types: ["Ice"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 115,
 		atk: 60,
@@ -509,10 +457,6 @@ cychill: {
 	num: -825,
 	species: "Cychill",
 	types: ["Ice", "Flying"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 70,
 		atk: 115,
@@ -553,10 +497,6 @@ name: {
 	num: -827,
 	species: "Name",
 	types: ["Bug", "Water"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 103,
 		atk: 95,
@@ -578,10 +518,6 @@ name: {
 	num: -828,
 	species: "Name",
 	types: ["Water", "Electric"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 134,
 		atk: 13,
@@ -602,10 +538,6 @@ name: {
 	num: -829,
 	species: "Name",
 	types: ["Steel", "Electric"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 91,
 		atk: 80,
@@ -626,10 +558,6 @@ farenheat: {
 	num: -830,
 	species: "Farenheat",
 	types: ["Water", "Fire"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 73,
 		atk: 66,
@@ -650,10 +578,6 @@ celsice: {
 	num: -831,
 	species: "Celsice",
 	types: ["Ice"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		def: 73,
 		atk: 112,
@@ -674,10 +598,6 @@ spychic: {
 	num: -833,
 	species: "Spychic",
 	types: ["Dark", "Psychic"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 60,
 		atk: 50,
@@ -698,10 +618,6 @@ murdoom: {
 	num: -834,
 	species: "Murdoom",
 	types: ["Dark", "Fighting"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 80,
 		atk: 140,
@@ -722,10 +638,6 @@ name: {
 	num: -836,
 	species: "Name",
 	types: ["Bug", "Dragon"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 81,
 		atk: 110,
@@ -747,10 +659,6 @@ name: {
 	num: -837,
 	species: "Name",
 	types: ["Steel", "Dragon"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 107,
 		atk: 125,
@@ -771,10 +679,6 @@ name: {
 	num: -838,
 	species: "Name",
 	types: ["Dragon", "Fighting"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 100,
 		atk: 96,
@@ -797,10 +701,6 @@ name: {
 	num: -839,
 	species: "Name",
 	types: ["Electric", "Ice"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5	
-	},
 	baseStats: {
 		hp: 60,
 		atk: 41,
@@ -823,10 +723,6 @@ name: {
 	num: -840,
 	species: "Name",
 	types: ["Fighting"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 111,
 		atk: 85,
@@ -849,10 +745,6 @@ name: {
 	num: -841,
 	species: "Name",
 	types: ["Dark", "Psychic"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 80,
 		atk: 80,
@@ -873,10 +765,6 @@ charidbyss: {
 	num: -851,
 	species: "Charidbyss",
 	types: ["Water", "Dark"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 87,
 		atk: 65,
@@ -898,10 +786,6 @@ faeum: {
 	num: -855,
 	species: "Faeum",
 	types: ["Fairy", "Flying"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 90,
 		atk: 60,
@@ -924,10 +808,6 @@ wyvearn: {
 	num: -856,
 	species: "Wyvearn",
 	types: ["Dragon", "Flying"],
-	genderRatio: {
-		M: 0.5,
-		F: 0.5
-	},
 	baseStats: {
 		hp: 88,
 		atk: 116,
