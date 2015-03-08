@@ -148,9 +148,9 @@ flytrapmega: {
 	color: "color",
 	eggGroups: ["Undiscovered"]
 },
-name: {
+namefour: {
 	num: -804,
-	species: "Name",
+	species: "Name-Four",
 	types: ["Normal", "Flying"],
 	genderRatio: {
 		M: 0.5,
@@ -254,9 +254,9 @@ bandirto: {
 	color: "Color",
 	eggGroups: ["Undiscovered"]
 },
-name9: {
+namenine: {
 	num: -809,
-	species: "name9",
+	species: "Name-Nine",
 	types: ["Ground", "Fairy"],
 	baseStats: {
 		hp: 130,
@@ -506,9 +506,9 @@ ogre: {
 	color: "Blue",
 	eggGroups: ["Undiscovered"]
 },
-name: {
+nametwentythree: {
 	num: -823,
-	species: "Name",
+	species: "Name-TwentyThree",
 	types: ["Water", "Dragon"],
 	baseStats: {
 		hp: 50,
@@ -527,9 +527,9 @@ name: {
 	color: "Color",
 	eggGroups: ["Undiscovered"]
 },
-name: {
+nametwentyfour: {
 	num: -824,
-	species: "Name",
+	species: "Name-TwentyFour",
 	types: ["Ice"],
 	baseStats: {
 		hp: 115,
@@ -587,9 +587,9 @@ cydnidie: {
 	color: "Black",
 	eggGroups: ["Undiscovered"]
 },
-name: {
+nametwentyseven: {
 	num: -827,
-	species: "Name",
+	species: "Name-TwentySeven",
 	types: ["Bug", "Water"],
 	baseStats: {
 		hp: 103,
@@ -608,9 +608,9 @@ name: {
 	color: "Color",
 	eggGroups: ["Undiscovered"]
 },
-name: {
+nametwentyeight: {
 	num: -828,
-	species: "Name",
+	species: "Name-TwentyEight",
 	types: ["Water", "Electric"],
 	baseStats: {
 		hp: 134,
@@ -628,9 +628,9 @@ name: {
 	color: "Color",
 	eggGroups: ["Undiscovered"]
 },
-name: {
+nametwentynine: {
 	num: -829,
-	species: "Name",
+	species: "Name-TwentyNine",
 	types: ["Steel", "Electric"],
 	baseStats: {
 		hp: 91,
@@ -728,9 +728,9 @@ murdoom: {
 	color: "Black",
 	eggGroups: ["Undiscovered"]
 },
-name: {
+namethirtysix: {
 	num: -836,
-	species: "Name",
+	species: "Name-ThirtySix",
 	types: ["Bug", "Dragon"],
 	baseStats: {
 		hp: 81,
@@ -749,9 +749,9 @@ name: {
 	color: "Color",
 	eggGroups: ["Undiscovered"]	
 },
-name: {
+namethirtyseven: {
 	num: -837,
-	species: "Name",
+	species: "Name-ThirtySeven",
 	types: ["Steel", "Dragon"],
 	baseStats: {
 		hp: 107,
@@ -769,9 +769,9 @@ name: {
 	color: "Color",
 	eggGroups: ["Undiscovered"]
 },
-name: {
+namethiryeight: {
 	num: -838,
-	species: "Name",
+	species: "Name-ThiryEight",
 	types: ["Dragon", "Fighting"],
 	baseStats: {
 		hp: 100,
@@ -789,11 +789,10 @@ name: {
 	weightkg: 68.5,
 	color: "Color",
 	eggGroups: ["Undiscovered"]
-}
-,
-name: {
+},
+namethirtynine: {
 	num: -839,
-	species: "Name",
+	species: "Name-ThirtyNine",
 	types: ["Electric", "Ice"],
 	baseStats: {
 		hp: 60,
@@ -813,9 +812,9 @@ name: {
 	color: "Color",
 	eggGroups: ["Undiscovered"]
 },
-name: {
+nameforty: {
 	num: -840,
-	species: "Name",
+	species: "Name-Forty",
 	types: ["Fighting"],
 	baseStats: {
 		hp: 111,
@@ -835,9 +834,9 @@ name: {
 	color: "Color",
 	eggGroups: ["Undiscovered"]
 },
-name: {
+namefortyone: {
 	num: -841,
-	species: "Name",
+	species: "Name-FortyOne",
 	types: ["Dark", "Psychic"],
 	baseStats: {
 		hp: 80,
