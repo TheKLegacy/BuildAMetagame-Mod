@@ -78,7 +78,7 @@ waterstarter: {
 	otherFormes: ["waterstarterhmega"]
 },
 waterstartermega: {
-	num: -801,
+	num: -802,
 	species: "Waterstarter-Mega",
 	baseSpecies: "waterstarter",
 	forme: "Mega",
@@ -97,7 +97,7 @@ waterstartermega: {
 		spe:100
 	},
 	abilities: {
-		0: "Mystic Veil"
+		0: "Oversight"
 	},
 	heightm: 0.0,
 	weightkg: 0.0,
@@ -293,6 +293,25 @@ sinder: {
 	heightm: 0.0,
 	weightkg: 0.0,
 	color: "Red",
+	eggGroups: ["Undiscovered"]
+},
+draken: {
+	num: -812,
+	species: "Draken",
+	baseStats: {
+		hp: 55,
+		atk: 79,
+		def: 87,
+		spa: 142,
+		spd: 64,
+		spe:113
+	},
+	abilities: {
+		0: "Sealed Armour",
+	},
+	heightm: 0.0,
+	weightkg: 0.0,
+	color: "Blue",
 	eggGroups: ["Undiscovered"]
 },
 springfest: {
