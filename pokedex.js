@@ -254,6 +254,28 @@ bandirto: {
 	color: "Color",
 	eggGroups: ["Undiscovered"]
 },
+name9: {
+	num: -809,
+	species: "name9",
+	types: ["Ground", "Fairy"],
+	baseStats: {
+		hp: 130,
+		atk: 60,
+		def: 80,
+		spa: 90,
+		spd: 58,
+		spe: 32
+	},
+	abilities: {
+		0: "Tactician",
+		0: "Specialist",
+		H: "Enchantment"
+	},
+	heightm: 0.0,
+	weightkg: 0.0,
+	color: "Brown",
+	eggGroups: ["Undiscovered"]
+},
 tiflectum: {
 	num: -810,
 	species: "Tiflectum",
@@ -298,6 +320,7 @@ sinder: {
 draken: {
 	num: -812,
 	species: "Draken",
+	types: ["Dragon", "Water"],
 	baseStats: {
 		hp: 55,
 		atk: 79,
