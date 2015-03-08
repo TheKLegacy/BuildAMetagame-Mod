@@ -19,8 +19,8 @@ simorgh: {
 	abilities: {
 		0: "Enraged"
 	},
-	heightm: 0.0
-	weightkg: 0.0
+	heightm: 0.0,
+	weightkg: 0.0,
 	color: "Red",
 	eggGroups: ["Undiscovered"],
 	otherFormes: ["simorghmega"]
@@ -50,6 +50,58 @@ simorghmega: {
 	heightm: 0.0,
 	weightkg: 0.0,
 	color: "Red"
+	eggGroups: ["Undiscovered"]
+},
+waterstarter: {
+	num: -802,
+	species: waterstarter,
+	types: ["Water", "Flying"],
+	genderRatio: {
+		M: 0.25,
+		F: 0.75
+	},
+	baseStats: {
+		hp: 95,
+		atk: 118,
+		def: 65,
+		spa: 62,
+		spd: 120,
+		spe: 70
+	},
+	abilities: {
+		0: "Resolve"
+	},
+	heightm: 0.0
+	weightkg: 0.0
+	color: "Blue",
+	eggGroups: ["Undiscovered"],
+	otherFormes: ["waterstarterhmega"]
+},
+waterstartermega: {
+	num: -801,
+	species: "Waterstarter-Mega",
+	baseSpecies: "waterstarter",
+	forme: "Mega",
+	formeLetter: "M",
+	types: ["Water", "Fighting"],
+	genderRatio: {
+		M: 0.25,
+		F: 0.75
+	},
+	baseStats: {
+		hp: 95,
+		atk: 78,
+		def: 85,
+		spa: 122,
+		spd: 150,
+		spe:100
+	},
+	abilities: {
+		0: "Mystic Veil"
+	},
+	heightm: 0.0,
+	weightkg: 0.0,
+	color: "Blue"
 	eggGroups: ["Undiscovered"]
 },
 flytrap: {
