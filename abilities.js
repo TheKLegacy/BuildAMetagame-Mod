@@ -432,5 +432,16 @@ exports.BattleAbilities = {
 		name: "Oversight",
 		rating: 1,
 		num: -1044
+	},
+	"sleepingstrength": {
+		shortDesc: "If asleep the user's atk is multiplied by 30%",
+		id: "sleepingstrength",
+		name: "Sleeping Strength",
+		onModifyAtkPriority: 5,
+		onModifyAtk: function (atk) {
+			return this.chainModify(1.3);
+		},
+		rating: 2.5,
+		num: -1045
 	}
 };
