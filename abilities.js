@@ -443,5 +443,25 @@ exports.BattleAbilities = {
 		},
 		rating: 2.5,
 		num: -1045
-	}
+	},
+	"drought": {
+		shortDesc: "On switch-in, this Pokemon summons Sunny Day.",
+		onStart: function (source) {
+			this.setWeather('sunnyday');
+		},
+		id: "drought",
+		name: "Drought",
+		rating: 4,
+		num: 70
+	},
+	"drought": {
+		shortDesc: "On switch-in, this Pokemon summons Sunny Day.",
+		onStart: function (source) {
+			this.setWeather('sunnyday');
+		},
+		id: "drought",
+		name: "Drought",
+		rating: 4,
+		num: 70
+	},
 };
