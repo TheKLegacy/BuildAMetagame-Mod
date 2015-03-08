@@ -27,6 +27,28 @@ exports.BattleAbilities = {
                 rating: 4,
                 num: -1003
         },
+"resolve": {
+		shortDesc: "This Pokemon's moves and their effects ignore the Abilities of other Pokemon.",
+		onStart: function (pokemon) {
+			this.add('-ability', pokemon, 'Resolve');
+		},
+		onAllyModifyPokemonPriority: 100,
+		onAllyModifyPokemon: function (pokemon) {
+			if (this.activePokemon === this.effectData.target && pokemon !== this.activePokemon) {
+				pokemon.ignore['Ability'] = 'A';
+			}
+		},
+		onFoeModifyPokemonPriority: 100,
+		onFoeModifyPokemon: function (pokemon) {
+			if (this.activePokemon === this.effectData.target) {
+				pokemon.ignore['Ability'] = 'A';
+			}
+		},
+		id: "resolve",
+		name: "Resolve",
+		rating: 3.5,
+		num: -1024
+	},
 "paineater": {
 	desc: "This pokemon is healed for 1/4 of the enemy's health that has been lost.",
 	shortDesc: "Pokemon restores 1/4 of damage dealt to the opponent.",
