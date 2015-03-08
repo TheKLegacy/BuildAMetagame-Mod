@@ -421,5 +421,16 @@ exports.BattleAbilities = {
 	isNonstandard: true,
 	rating: 3.5
 	num: -1043
-}
+},
+"oversight": {
+		shortDesc: "This Pokemon's Special Defense is halfed.",
+		onModifySpDPriority: 5,
+		onModifySpD: function (spd) {
+			return this.chainModify(0.5);
+		},
+		id: "oversight",
+		name: "Oversight",
+		rating: 1,
+		num: -1044
+	}
 };
