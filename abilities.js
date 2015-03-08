@@ -444,24 +444,54 @@ exports.BattleAbilities = {
 		rating: 2.5,
 		num: -1045
 	},
-	"drought": {
-		shortDesc: "On switch-in, this Pokemon summons Sunny Day.",
+	"desert": {
+		shortDesc: "On switch-in, this Pokemon summons Desert.",
 		onStart: function (source) {
-			this.setWeather('sunnyday');
+			this.setWeather('desert');
 		},
-		id: "drought",
-		name: "Drought",
+		id: "desert",
+		name: "Desert",
 		rating: 4,
-		num: 70
+		num: -1046
 	},
-	"drought": {
-		shortDesc: "On switch-in, this Pokemon summons Sunny Day.",
+	"glacier": {
+		shortDesc: "On switch-in, this Pokemon summons Glacier.",
+		onStart: function (source) {
+			this.setWeather('glacier');
+		},
+		id: "glacier",
+		name: "Glacier",
+		rating: 4,
+		num: -1047
+	},
+	"meadow": {
+		shortDesc: "On switch-in, this Pokemon summons Meadowy.",
+		onStart: function (source) {
+			this.setWeather('meadow');
+		},
+		id: "meadow",
+		name: "Meadow",
+		rating: 4,
+		num: -1048
+	},
+	"ocean": {
+		shortDesc: "On switch-in, this Pokemon summons Ocean.",
 		onStart: function (source) {
 			this.setWeather('sunnyday');
 		},
-		id: "drought",
-		name: "Drought",
+		id: "ocean",
+		name: "Ocean",
 		rating: 4,
-		num: 70
+		num: -1049
+	},
+	"pollutedlandscape": {
+		shortDesc: "On switch-in, this Pokemon summons Polluted Landscape.",
+		onStart: function (source) {
+			this.setWeather('sunnyday');
+		},
+		id: "pollutedlandscape",
+		name: "Polluted Landscape",
+		rating: 4,
+		num: -1050
 	},
 };
