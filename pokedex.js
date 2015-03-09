@@ -370,7 +370,7 @@ mirrage: {
 		spe: 110
 	},
 	abilities: {
-		0: "Magic Mirror"
+		0: "Mystic Mirror"
 	},
 	heightm: 0.0,
 	weightkg: 0.0,
