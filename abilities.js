@@ -441,6 +441,53 @@ exports.BattleAbilities = {
 	rating: 3.5,
 	num: -1034
 },
+"contamination": {
+	desc: "All Water-type moves have a 30% chance to poison the opponent.",
+	shortDesc: "Water moves have a 30% chance to badly poison the foe.",
+	onAfterDamage: function (damage, target, source, move) {
+		if (move.type === 'Water' && move.id !== 'hiddenpower') {
+			if (this.random(10) < 3) {
+				source.trySetStatus('tox', target, move);
+			}
+		}
+	},
+	id: "contamination",
+	name: "Contamination",
+	isNonstandard: true,
+	rating: 4.5,
+	num: -1036
+},
+"superweakarmor": {
+	desc: "Moves with a base power of 40 or less deal half as much damage as usual when being used against this pokemon.",
+	shortDesc: "Moves with 40 BP or less are cut in half.",
+	onBasePowerPriority: 8,
+	onBasePower: function (basePower, attacker, defender, move) {
+		if (basePower <= 40) {
+			this.debug("Superweak Armor weaken");
+			return this.chainModify(0.5);
+		}
+	},
+	id: "superweakarmor",
+	name: "Superweak Armor",
+	isNonstandard: true,
+	rating: 3.5,
+	num: -1037
+} ,
+"neutralitybarrier": {
+	desc: "Attacks that are neutral have their damage reduced 66%.",
+	shortDesc: "Neutral moves gad decreased by 66%.",
+	onSourceModifyDamage: function (damage, source, target, move) {
+		if(target.runEffectiveness(move) === 0) {
+			this.debug("Neutrality Barrier weaken");
+			return this.chainModify(0.66);
+		}
+	},
+	id: "neutralitybarrier",
+	name: "Neutrality Barrier",
+	isNonstandard: true,
+	rating: 5,
+	num: -1038
+},
 "juggernaut": {
 	desc: "If this Pokemon knocks out another Pokemon with a damaging attack, its Attack is raised by one stage.",
 	shortDesc: "This Pokemon's Attack is boosted by 1 if it attacks and faints another Pokemon.",
@@ -637,6 +684,43 @@ exports.BattleAbilities = {
 		name: "Pollutant",
 		rating: 4,
 		num: -1050
+	},
+	"berserk": {
+		desc: "When this Pokemon has 1/2 or less of its maximum HP, rounded down, its attacking stat is multiplied by 1.5 .",
+		shortDesc: "When this Pokemon has 1/2 or less of its max HP, its attacks do 1.5x damage.",
+		onModifyAtkPriority: 5,
+		onModifyAtk: function (atk, attacker, defender, move) {
+			if (attacker.hp <= attacker.maxhp / 2) {
+				this.debug('Berserk boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA: function (atk, attacker, defender, move) {
+			if (attacker.hp <= attacker.maxhp / 3) {
+				this.debug('Berserk boost');
+				return this.chainModify(1.5);
+			}
+		},
+		id: "berserk",
+		name: "Berserk",
+		rating: 2,
+		num: -1051
+	},
+	"disruption": {
+		desc: "All non-damaging moves that check accuracy have their accuracy changed to 50% when used on this Pokemon. This change is done before any other accuracy modifying effects.",
+		shortDesc: "Status moves with accuracy checks are 50% accurate when used on this Pokemon.",
+		onAccuracyPriority: 10,
+		onAccuracy: function (accuracy, target, source, move) {
+			if (move.category === 'Status' && typeof move.accuracy === 'number') {
+				this.debug('Disruption - setting accuracy to 50');
+				return 50;
+			}
+		},
+		id: "disruption",
+		name: "Disruption",
+		rating: 2.5,
+		num: -1052
 	},
 	
 };
