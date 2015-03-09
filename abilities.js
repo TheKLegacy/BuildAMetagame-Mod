@@ -27,6 +27,20 @@ exports.BattleAbilities = {
                 rating: 4,
                 num: -1003
         },
+"jaggedhide": {
+		desc: "Pokemon making contact with this Pokemon lose 1/8 of their maximum HP, rounded down.",
+		shortDesc: "Pokemon making contact with this Pokemon lose 1/8 of their max HP.",
+		onAfterDamageOrder: 1,
+		onAfterDamage: function (damage, target, source, move) {
+			if (source && source !== target && move && move.isContact) {
+				this.damage(source.maxhp / 8, source, target, null, true);
+			}
+		},
+		id: "jaggedhide",
+		name: "Jagged Hide",
+		rating: 3,
+		num: -1008
+	},
 "resolve": {
 		shortDesc: "This Pokemon's moves and their effects ignore the Abilities of other Pokemon.",
 		onStart: function (pokemon) {
@@ -494,4 +508,5 @@ exports.BattleAbilities = {
 		rating: 4,
 		num: -1050
 	},
+	
 };
