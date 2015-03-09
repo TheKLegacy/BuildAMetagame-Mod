@@ -5,7 +5,7 @@ exports.BattleTypeChart = {
 			"Dark": 0,
 			"Dragon": 0,
 			"Electric": 0,
-			"Fairy": 1,
+			"Fairy": 2,
 			"Fighting": 2,
 			"Fire": 1,
 			"Flying": 1,
