@@ -27,6 +27,18 @@ exports.BattleAbilities = {
                 rating: 4,
                 num: -1003
         },
+        "dauntless": {
+		desc: "This Pokemon ignores other Pokemon's Attack, Special Attack, and accuracy stat stages when taking damage, and ignores other Pokemon's Defense, Special Defense, and evasiveness stat stages when dealing damage.",
+		shortDesc: "This Pokemon ignores other Pokemon's stat stages when taking or doing damage.",
+		id: "dauntless",
+		name: "Dauntless",
+		ignoreEvasion: true,
+		ignoreDefensive: true,
+		ignoreAccuracy: true,
+		ignoreOffensive: true,
+		rating: 3,
+		num: -1005
+	},
         "endurance": {
 		desc: "If this Pokemon is at full HP, it survives one hit with at least 1 HP. OHKO moves fail when used against this Pokemon.",
 		shortDesc: "If this Pokemon is at full HP, it survives one hit with at least 1 HP. Immune to OHKO.",
@@ -121,6 +133,27 @@ exports.BattleAbilities = {
 		rating: 3.5,
 		num: -1012
 	},
+	"spook ": {
+		desc: "On switch-in, this Pokemon lowers the Special Attack of adjacent opposing Pokemon by 1 stage. Pokemon behind a substitute are immune.",
+		shortDesc: "On switch-in, this Pokemon lowers the Special Attack of adjacent opponents by 1 stage.",
+		onStart: function (pokemon) {
+			var foeactive = pokemon.side.foe.active;
+			for (var i = 0; i < foeactive.length; i++) {
+				if (!foeactive[i] || !this.isAdjacent(foeactive[i], pokemon)) continue;
+				if (foeactive[i].volatiles['substitute']) {
+					// does it give a message?
+					this.add('-activate', foeactive[i], 'Substitute', 'ability: Spook', '[of] ' + pokemon);
+				} else {
+					this.add('-ability', pokemon, 'Spook', '[of] ' + foeactive[i]);
+					this.boost({spa: -1}, foeactive[i], pokemon);
+				}
+			}
+		},
+		id: "spook,
+		name: "Spook",
+		rating: 3.5,
+		num: -1013
+	},
 "paineater": {
 	desc: "This pokemon is healed for 1/4 of the enemy's health that has been lost.",
 	shortDesc: "Pokemon restores 1/4 of damage dealt to the opponent.",
@@ -168,6 +201,21 @@ exports.BattleAbilities = {
 	isNonstandard: true,
 	rating: 3.5,
 	num: -1016
+},
+"muddyarmor": {
+	desc: "All Fire-, Rock-, and Ground-type attacks have their damage reduced by 0.5x when used on the Pokemon.",
+	shortDesc: "Fire, Rock, and Grount moves damage are reduced 0.5x.",
+	onModifyDamage: function (damage, source, target, move) {
+		if (this.runEffectiveness(move) < 0) {
+			this.debug('Muddy Armor decrease');
+			return this.chainModify(0.5);
+		}
+	},
+	id: "muddyarmor",
+	isNonstandard: true,
+	name: "Muddy Armor",
+	rating: 4,
+	num: -1020
 },
 "tactician": {
 	desc: "If this Pokemon switches into an opponent with equal Defenses or higher Defense than Special Defense, this Pokemon's Special Attack receives a 50% boost. If this Pokemon switches into an opponent with higher Special Defense than Defense, this Pokemon's Attack receive a 50% boost.",
@@ -580,13 +628,13 @@ exports.BattleAbilities = {
 		rating: 4,
 		num: -1049
 	},
-	"pollutedlandscape": {
+	"pollutant": {
 		shortDesc: "On switch-in, this Pokemon summons Polluted Landscape.",
 		onStart: function (source) {
 			this.setWeather('sunnyday');
 		},
-		id: "pollutedlandscape",
-		name: "Polluted Landscape",
+		id: "pollutant",
+		name: "Pollutant",
 		rating: 4,
 		num: -1050
 	},
