@@ -27,6 +27,25 @@ exports.BattleAbilities = {
                 rating: 4,
                 num: -1003
         },
+        "endurance": {
+		desc: "If this Pokemon is at full HP, it survives one hit with at least 1 HP. OHKO moves fail when used against this Pokemon.",
+		shortDesc: "If this Pokemon is at full HP, it survives one hit with at least 1 HP. Immune to OHKO.",
+		onDamagePriority: -100,
+		onDamage: function (damage, target, source, effect) {
+			if (effect && effect.ohko) {
+				this.add('-activate', target, 'Endurance');
+				return 0;
+			}
+			if (target.hp === target.maxhp && damage >= target.hp && effect && effect.effectType === 'Move') {
+				this.add('-activate', target, 'Endurance');
+				return target.hp - 1;
+			}
+		},
+		id: "endurance",
+		name: "Endurance",
+		rating: 3,
+		num: -1007
+	},
 "jaggedhide": {
 		desc: "Pokemon making contact with this Pokemon lose 1/8 of their maximum HP, rounded down.",
 		shortDesc: "Pokemon making contact with this Pokemon lose 1/8 of their max HP.",
@@ -40,6 +59,45 @@ exports.BattleAbilities = {
 		name: "Jagged Hide",
 		rating: 3,
 		num: -1008
+	},
+},
+	"mysticmirror": {
+		desc: "This Pokemon blocks certain status moves and instead uses the move against the original user.",
+		shortDesc: "This Pokemon blocks certain status moves and bounces them back to the user.",
+		id: "mysticmirror",
+		name: "Mystic Mirror",
+		onTryHitPriority: 1,
+		onTryHit: function (target, source, move) {
+			if (target === source) return;
+			if (move.hasBounced) return;
+			if (typeof move.isBounceable === 'undefined') {
+				move.isBounceable = !!(move.category === 'Status' && (move.status || move.boosts || move.volatileStatus === 'confusion' || move.forceSwitch));
+			}
+			if (move.isBounceable) {
+				var newMove = this.getMoveCopy(move.id);
+				newMove.hasBounced = true;
+				this.useMove(newMove, target, source);
+				return null;
+			}
+		},
+		onAllyTryHitSide: function (target, source, move) {
+			if (target.side === source.side) return;
+			if (move.hasBounced) return;
+			if (typeof move.isBounceable === 'undefined') {
+				move.isBounceable = !!(move.category === 'Status' && (move.status || move.boosts || move.volatileStatus === 'confusion' || move.forceSwitch));
+			}
+			if (move.isBounceable) {
+				var newMove = this.getMoveCopy(move.id);
+				newMove.hasBounced = true;
+				this.useMove(newMove, target, source);
+				return null;
+			}
+		},
+		effect: {
+			duration: 1
+		},
+		rating: 5,
+		num: -1010
 	},
 "resolve": {
 		shortDesc: "This Pokemon's moves and their effects ignore the Abilities of other Pokemon.",
@@ -61,7 +119,7 @@ exports.BattleAbilities = {
 		id: "resolve",
 		name: "Resolve",
 		rating: 3.5,
-		num: -1024
+		num: -1012
 	},
 "paineater": {
 	desc: "This pokemon is healed for 1/4 of the enemy's health that has been lost.",
@@ -110,6 +168,30 @@ exports.BattleAbilities = {
 	isNonstandard: true,
 	rating: 3.5,
 	num: -1016
+},
+"tactician": {
+	desc: "If this Pokemon switches into an opponent with equal Defenses or higher Defense than Special Defense, this Pokemon's Special Attack receives a 50% boost. If this Pokemon switches into an opponent with higher Special Defense than Defense, this Pokemon's Attack receive a 50% boost.",
+	shortDesc: "On switch-in, Attack or Sp. Atk is boosted by 1 based on the foes' weaker Defense.",
+	onStart: function (pokemon) {
+		var foeactive = pokemon.side.foe.active;
+		var totaldef = 0;
+		var totalspd = 0;
+		for (var i = 0; i < foeactive.length; i++) {
+			if (!foeactive[i] || foeactive[i].fainted) continue;
+			totaldef += foeactive[i].getStat('def', false, true);
+			totalspd += foeactive[i].getStat('spd', false, true);
+		}
+		if (totaldef && totaldef >= totalspd) {
+			this.boost({spa:1});
+		} else if (totalspd) {
+			this.boost({atk:1});
+		}
+	},
+	id: "tactician",
+	name: "Tactician",
+	isNonstandard: true,
+	rating: 4,
+	num: -1021
 },
 "overdrive": {
 	desc: "When the Pokemon's HP is at 50% or below, their speed stat is doubled.",
