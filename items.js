@@ -378,33 +378,33 @@ exports.BattleItems = {
 	desc: "Reduces damage by 70% when switching in."
 
 },
-	"abomasite": {
-		id: "abomasite",
-		name: "Abomasite",
-		spritenum: 575,
-		megaStone: "Abomasnow-Mega",
-		megaEvolves: "Abomasnow",
+	"flytrapite": {
+		id: "flytrapite",
+		name: "Flytrapite",
+		spritenum: 0,
+		megaStone: "Flytrap-Mega",
+		megaEvolves: "Flytrap",
 		onTakeItem: function (item, source) {
 			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
 			return true;
 		},
-		num: 674,
-		gen: 6,
-		desc: "If holder is an Abomasnow, this item allows it to Mega Evolve in battle."
+		num: -1040,
+		gen: -1,
+		desc: "If holder is an Flytrap, this item allows it to Mega Evolve in battle."
 	},
-	"abomasite": {
-		id: "abomasite",
-		name: "Abomasite",
-		spritenum: 575,
-		megaStone: "Abomasnow-Mega",
-		megaEvolves: "Abomasnow",
+	"waterstarterite": {
+		id: "waterstarterite",
+		name: "Waterstarterite",
+		spritenum: 0,
+		megaStone: "Waterstarter-Mega",
+		megaEvolves: "waterstarter",
 		onTakeItem: function (item, source) {
 			if (item.megaEvolves === source.baseTemplate.baseSpecies) return false;
 			return true;
 		},
-		num: 674,
-		gen: 6,
-		desc: "If holder is an Abomasnow, this item allows it to Mega Evolve in battle."
+		num: -1041,
+		gen: -1,
+		desc: "If holder is an waterstarter, this item allows it to Mega Evolve in battle."
 	}
 
 };
