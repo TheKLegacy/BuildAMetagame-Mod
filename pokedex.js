@@ -1,57 +1,7 @@
 exports.BattlePokedex = {
 //Information about each Bammon is located here
-simorgh: {
-	num: -801,
-	species: Simorgh,
-	types: ["Fire", "Flying"],
-	genderRatio: {
-		M: 0.25,
-		F: 0.75
-	},
-	baseStats: {
-		hp: 80,
-		atk: 110,
-		def: 90,
-		spa: 60,
-		spd: 90,
-		spe: 100
-	},
-	abilities: {
-		0: "Enraged"
-	},
-	heightm: 0.0,
-	weightkg: 0.0,
-	color: "Red",
-	eggGroups: ["Undiscovered"],
-	otherFormes: ["simorghmega"]
-},
-simorghmega: {
-	num: -801,
-	species: "Simorgh-Mega",
-	baseSpecies: "Simorgh",
-	forme: "Mega",
-	formeLetter: "M",
-	types: ["Fire", "Flying"],
-	genderRatio: {
-		M: 0.25,
-		F: 0.75
-	},
-	baseStats: {
-		hp: 80,
-		atk: 100,
-		def: 105,
-		spa: 145,
-		spd: 105,
-		spe: 95
-	},
-	abilities: {
-		0: "Mystic Veil"
-	},
-	heightm: 0.0,
-	weightkg: 0.0,
-	color: "Red"
-	eggGroups: ["Undiscovered"]
-},
+simorgh:{num: -801,species: "Simorgh",types: ["Fire", "Flying"],genderRatio:{M: 0.25,F: 0.75},baseStats:{hp: 80,atk: 110,def: 90,spa: 60,spd: 90,spe: 100},abilities:{0: "Enraged"},heightm: 0.0,weightkg: 0.0,color: "Red",eggGroups: ["Undiscovered"],otherFormes: ["simorghmega"]},
+simorghmega:{num: -801,species: "Simorgh-Mega",baseSpecies: "Simorgh",forme: "Mega",formeLetter: "M",types: ["Fire", "Flying"],genderRatio: {M: 0.25,F: 0.75},baseStats: {hp: 80,atk: 100,def: 105,spa: 145,spd: 105,spe: 95},abilities: {0: "Mystic Veil"},heightm: 0.0,weightkg: 0.0,color: "Red",eggGroups: ["Undiscovered"]},
 waterstarter: {
 	num: -802,
 	species: waterstarter,
