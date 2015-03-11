@@ -1,24 +1,25 @@
 exports.BattleAbilities = {
 //the file where an ability's functionality is stored
-"enchantedivy": {
-	desc: "This Pokemon's Special Attack stat is 1.4x stronger. Therefore, if their Special Attack on the status screen is 100, it effectively has a Special Attack stat of 140; which is then subject to the full range of Special Attack boosts and drops.",
-	shortDesc: "This Pokemon's Special Attack is 1.4x stronger.",
-	onModifySpaPriority: 5,
-	onModifySpa: function (spa, pokemon) {
-		this.debug("Enchanted Ivy boost");
-		return this.chainModify(1.4);
+	"enchantedivy": {
+		desc: "This Pokemon's Special Attack stat is 1.4x stronger. Therefore, if their Special Attack on the status screen is 100, it effectively has a Special Attack stat of 140; which is then subject to the full range of Special Attack boosts and drops.",
+		shortDesc: "This Pokemon's Special Attack is 1.4x stronger.",
+		onModifySpaPriority: 5,
+		onModifySpa: function (spa, pokemon) {
+			this.debug("Enchanted Ivy boost");
+			return this.chainModify(1.4);
+		},
+		id: "enchantedivy",
+		name: "Enchanted Ivy",
+		isNonstandard: true,
+		rating: 4.5,
+		num: -1001
 	},
-	id: "enchantedivy",
-	name: "Enchanted Ivy",
-	isNonstandard: true,
-	rating: 4.5,
-	num: -1001
-},
-"plantingroots": {
+	"plantingroots": {
                 desc: "The Pokemon makes extendable roots to plant into the ground, allowing it to get 1/16 of it's max HP back at the end of each turn.",
                 shortDesc: "The Pokemon restores 1/16 of it's max HP at the end of each turn.",
                 id: "plantingroots",
                 name: "Planting Roots",
+                isNonstandard: true,
                 onResidualOrder: 5,
                 onResidualSubOrder: 2,
                 onResidual: function (pokemon) {
@@ -36,6 +37,7 @@ exports.BattleAbilities = {
 		ignoreDefensive: true,
 		ignoreAccuracy: true,
 		ignoreOffensive: true,
+		isNonstandard: true,
 		rating: 3,
 		num: -1005
 	},
@@ -55,10 +57,11 @@ exports.BattleAbilities = {
 		},
 		id: "endurance",
 		name: "Endurance",
+		isNonstandard: true,
 		rating: 3,
 		num: -1007
 	},
-"jaggedhide": {
+	"jaggedhide": {
 		desc: "Pokemon making contact with this Pokemon lose 1/8 of their maximum HP, rounded down.",
 		shortDesc: "Pokemon making contact with this Pokemon lose 1/8 of their max HP.",
 		onAfterDamageOrder: 1,
@@ -67,6 +70,7 @@ exports.BattleAbilities = {
 				this.damage(source.maxhp / 8, source, target, null, true);
 			}
 		},
+		isNonstandard: true,
 		id: "jaggedhide",
 		name: "Jagged Hide",
 		rating: 3,
@@ -110,8 +114,9 @@ exports.BattleAbilities = {
 		},
 		rating: 5,
 		num: -1010
+		isNonstandard: true,
 	},
-"resolve": {
+	"resolve": {
 		shortDesc: "This Pokemon's moves and their effects ignore the Abilities of other Pokemon.",
 		onStart: function (pokemon) {
 			this.add('-ability', pokemon, 'Resolve');
