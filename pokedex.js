@@ -678,18 +678,19 @@ akourok: {
 	color: "Black",
 	eggGroups: ["Undiscovered"]
 },
-namethirtysix: {
-	num: -836,
-	species: "Name-ThirtySix",
-	types: ["Bug", "Dragon"],
-	baseStats: {
-		hp: 81,
-		atk: 110,
-		def: 80,
-		spa: 30,
-		spd: 80,
-		spe: 99
-	},
+//not in beta
+//namethirtysix: {
+//	num: -836,
+//	species: "Name-ThirtySix",
+//	types: ["Bug", "Dragon"],
+//	baseStats: {
+//		hp: 81,
+//		atk: 110,
+//		def: 80,
+//		spa: 30,
+//		spd: 80,
+//		spe: 99
+//	},
 	abilities: {
 		0: "Levitate",
 		H: "Sharp Shooter"
@@ -699,9 +700,9 @@ namethirtysix: {
 	color: "Color",
 	eggGroups: ["Undiscovered"]	
 },
-namethirtyseven: {
+rikuri: {
 	num: -837,
-	species: "Name-ThirtySeven",
+	species: "Rikuri",
 	types: ["Steel", "Dragon"],
 	baseStats: {
 		hp: 107,
@@ -801,7 +802,28 @@ namefortyone: {
 	},
 	heightm: 0.0,
 	weightkg: 0.0,
-	color: "Color",
+	color: " ",
+	eggGroups: ["Undiscovered"]
+},
+armorillo: {
+	num: -842,
+	species: "Armorillo",
+	types: ["Rock", "Fighting"],
+	baseStats: {
+		hp: 80,
+		atk: 135,
+		def: 140,
+		spa: 50,
+		spd: 70,
+		spe: 75
+	},
+	abilities: {
+		0: "Endurance"
+		H: "Berserk"
+	},
+	heightm: 0.0,
+	weightkg: 0.0,
+	color: " ",
 	eggGroups: ["Undiscovered"]
 },
 charidbyss: {
