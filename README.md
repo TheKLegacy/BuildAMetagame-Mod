@@ -8,8 +8,9 @@ Add the following to formats.js:
 		name: "BAM",
 		section: "Other Metagames",
 
+		mod: 'buildametagame',
 		ruleset: ['Sleep Clause Mod', 'Species Clause','BAM'],
-		banlist: ['Ubers','OU','UU','RU','NU','PU','NF','LC','CAP'] 
+		banlist: ['Uber','OU','UU','RU','NU','PU','NFE','LC','CAP', 'LC Uber']
 	},
 	
 This is a mod for Pokemon Showdown by Zarel. This mod was founded by Piexplode and was coded and created by the staff http://pastebin.com/7u5RTZ2h
