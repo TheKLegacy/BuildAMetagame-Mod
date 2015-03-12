@@ -658,9 +658,9 @@ spychic: {
 	color: "Color",
 	eggGroups: ["Undiscovered"]
 },
-murdoom: {
+akourok: {
 	num: -834,
-	species: "Murdoom",
+	species: "Akourok,
 	types: ["Dark", "Fighting"],
 	baseStats: {
 		hp: 80,
