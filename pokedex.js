@@ -660,7 +660,7 @@ spychic: {
 },
 akourok: {
 	num: -834,
-	species: "Akourok,
+	species: "Akourok",
 	types: ["Dark", "Fighting"],
 	baseStats: {
 		hp: 80,
