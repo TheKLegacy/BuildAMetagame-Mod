@@ -830,10 +830,7 @@ wispher: {
         num: -849,
 	species: Wispher,
 	types: ["Ghost","Fairy"],
-	genderRatio: {
-		M: 0,
-		F: 1
-	},
+	gender: "F",
 	baseStats: {
 		hp: 75,
 		atk: 99,
@@ -849,7 +846,7 @@ wispher: {
 	heightm: 1.3,
 	wieghtkg: 0.1,
 	color: "purple",
-	eggGroups: ["undescovered"]
+	eggGroups: ["Undiscovered"]
 },
 
 charidbyss: {
