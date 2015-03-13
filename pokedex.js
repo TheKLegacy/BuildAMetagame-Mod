@@ -660,7 +660,7 @@ spychic: {
 },
 akourok: {
 	num: -834,
-	species: "Akourok,
+	species: "Akourok",
 	types: ["Dark", "Fighting"],
 	baseStats: {
 		hp: 80,
@@ -691,15 +691,15 @@ akourok: {
 //		spd: 80,
 //		spe: 99
 //	},
-	abilities: {
-		0: "Levitate",
-		H: "Sharp Shooter"
-	},
-	heightm: 0.0,
-	weightkg: 0.0,
-	color: "Color",
-	eggGroups: ["Undiscovered"]	
-},
+//	abilities: {
+//		0: "Levitate",
+//		H: "Sharp Shooter"
+//	},
+//	heightm: 0.0,
+//	weightkg: 0.0,
+//	color: "Color",
+//	eggGroups: ["Undiscovered"]	
+//},
 rikuri: {
 	num: -837,
 	species: "Rikuri",
@@ -826,6 +826,32 @@ armorillo: {
 	color: " ",
 	eggGroups: ["Undiscovered"]
 },
+wispher: {
+        num: -849,
+	species: Wispher,
+	types: ["Ghost","Fairy"],
+	genderRatio: {
+		M: 0,
+		F: 1
+	},
+	baseStats: {
+		hp: 75,
+		atk: 99,
+		def: 90,
+		spa: 99,
+		spd: 94,
+		spe: 111
+	},
+	abilities: {
+		0: "Mastery",
+		1: "Sharp Eye"
+	},
+	heightm: 1.3,
+	wieghtkg: 0.1,
+	color: "purple",
+	eggGroups: ["undescovered"]
+},
+
 charidbyss: {
 	num: -851,
 	species: "Charidbyss",
