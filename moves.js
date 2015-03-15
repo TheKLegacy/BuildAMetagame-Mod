@@ -689,7 +689,7 @@ exports.BattleMoves = {
 	shortDesc: "2 turn attack.",
 	id: "jump",
 	isNonstandard: true,
-	name: Jump",
+	name: "Jump",
 	pp: 20,
 	priority: 0,
 	isContact: true,
