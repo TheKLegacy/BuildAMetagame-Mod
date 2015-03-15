@@ -138,7 +138,7 @@ exports.BattleAbilities = {
 		rating: 3.5,
 		num: -1012
 	},
-	"spook ": {
+	"spook": {
 		desc: "On switch-in, this Pokemon lowers the Special Attack of adjacent opposing Pokemon by 1 stage. Pokemon behind a substitute are immune.",
 		shortDesc: "On switch-in, this Pokemon lowers the Special Attack of adjacent opponents by 1 stage.",
 		onStart: function (pokemon) {
@@ -154,7 +154,7 @@ exports.BattleAbilities = {
 				}
 			}
 		},
-		id: "spook,
+		id: "spook",
 		name: "Spook",
 		rating: 3.5,
 		num: -1013
