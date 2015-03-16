@@ -327,9 +327,9 @@ mirrage: {
 	color: "White",
 	eggGroups: ["Undiscovered"]
 },
-skulprit: {
+mystook: {
 	num: -815,
-	species: "Skulprit",
+	species: "Mystook",
 	types: ["Ghost"],
 	baseStats: {
 		hp: 160,
@@ -621,7 +621,7 @@ farenheat: {
 celsice: {
 	num: -831,
 	species: "Celsice",
-	types: ["Ice"],
+	types: ["Ice", "Water"],
 	baseStats: {
 		def: 73,
 		atk: 112,
