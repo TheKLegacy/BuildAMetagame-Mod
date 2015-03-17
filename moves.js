@@ -1,215 +1,9 @@
 exports.BattleMoves = {
-//The code for moves
-
-"unnaturalslice": {
-	accuracy: 100,
-	basePower: 90,
-	category: "Physical",
-	desc: "Deals damage to one adjacent target with a higher chance for a critical hit. Makes contact.",
-	shortDesc: "High critical hit ratio.",
-	id: "unnaturalslice",
-	isNonstandard: true,
-	isViable: true,
-	name: "Unnatural Slice",
-	pp: 15,
-	priority: 0,
-	isContact: true,
-	critRatio: 0,
-	secondary: false,
-	target: "normal",
-	type: "Normal"
-	getEffectiveness: function (source, target, pokemon) {
-		var type = source.type || source;
-		var totalTypeMod = 0;
-		var types = target.getTypes && target.getTypes() || target.types;
-		for (var i = 0; i < types.length; i++) {
-			if (!this.data.TypeChart[types]) continue;
-			if (types === 'Ghost') {
-				totalTypeMod++;
-				continue;
-			}
-			var typeMod = this.data.TypeChart[types].damageTaken[type];
-			if (typeMod === 1) { // super-effective
-				totalTypeMod++;
-			}
-			if (typeMod === 2) { // resist
-				totalTypeMod--;
-			}
-		}
-		return totalTypeMod;
-	}
-},
-"boom": {
-	accuracy: 100,
-	basePower: 250,
-	category: "Physical",
-	desc: "The user explodes and leaves a huge crater in its place. The user faints.",
-	shortDesc: "Hits every Pokemon on the battlefield. The user faints.",
-	id: "boom",
-	isNonstandard: true,
-	name: "Boom",
-	pp: 5,
-	priority: 0,
-	selfdestruct: true,
-	secondary: false,
-	target: "allAdjacent",
-	type: "Normal"
-},
-"regulatorwave": {
-	accuracy: 100,
-	basePower: 80,
-	category: "Special",
-	desc: "The user emits a blast of energy that hits multiple foes..",
-	shortDesc: "No additional effect. Hits all adjacent foes.",
-	id: "regulatorwave",
-	isNonstandard: true,
-	isViable: true,
-	name: "Regulator Wave",
-	pp: 20,
-	priority: 0,
-	secondary: false,
-	target: "allAdjacentFoes",
-	type: "Normal"
-},
-"weakshock": {
-	accuracy: 100,
-	basePower: 40,
-	category: "Special",
-	desc: "The opponent is struck with a weak jolt of electricity.",
-	shortDesc: "Does damage to one adjacent target. No secondary effect",
-	id: "weakshock",
-	isNonstandard: true,
-	name: "Weak Shock",
-	pp: 45,
-	priority: 0,
-	secondary: false,
-	target: "normal",
-	type: "Electric"
-},
-"kineticslap": {
-	accuracy: 100,
-	basePower: 40,
-	category: "Physical",
-	desc: "The user slaps the opponent with a fist of concentrated matter.",
-	shortDesc: "Does damage to one adjacent target. No secondary effect",
-	id: "kineticslap",
-	isNonstandard: true,
-	name: "Kinetic Slap",
-	pp: 45,
-	priority: 0,
-	secondary: false,
-	target: "normal",
-	type: "Psychic"
-},
-"flingpebbles": {
-	accuracy: 100,
-	basePower: 40,
-	category: "Physical",
-	desc: "The user hurls small rocks at the opponent.",
-	shortDesc: "Does damage to one adjacent target. No secondary effect",
-	id: "flingpebbles",
-	isNonstandard: true,
-	name: "Fling Pebbles",
-	pp: 45,
-	priority: 0,
-	secondary: false,
-	target: "normal",
-	type: "Rock"
-},
-"flashfreeze": {
-	accuracy: 100,
-	basePower: 40,
-	category: "Special",
-	desc: "Uses a quick blast of cold air to chill the foe. Priority +1.",
-	shortDesc: "Usually goes first.",
-	id: "flashfreeze",
-	isNonstandard: true,
-	isViable: true,
-	name: "Flash Freeze",
-	pp: 20,
-	priority: 1,
-	secondary: false,
-	target: "normal",
-	type: "Ice"
-},
-"voidbreaker": {
-	accuracy: 90,
-	basePower: 120,
-	category: "Physical",
-	desc: "Deals damage to one adjacent or non-adjacent target. If the target lost HP, the user takes recoil damage equal to 33% that HP, rounded half up, but not less than 1HP. Makes contact.",
-	shortDesc: "Has 33% recoil.",
-	id: "voidbreaker",
-	isNonstandard: true,
-	isViable: true,
-	name: "Void Breaker",
-	pp: 15,
-	priority: 0,
-	isContact: true,
-	recoil: [33, 100],
-	secondary: false,
-	target: "any",
-	type: "Dark"
-},
-"rekindle": {
-	accuracy: true,
-	basePower: 0,
-	category: "Status",
-	desc: "The user restores 1/2 of its maximum HP, rounded half up.",
-	shortDesc: "Heals the user by 50% of its max HP.",
-	id: "rekindle",
-	isNonstandard: true,
-	isViable: true,
-	name: "Rekindle",
-	pp: 10,
-	priority: 0,
-	isSnatchable: true,
-	heal: [1, 2],
-	secondary: false,
-	target: "self",
-	type: "Fire"
-},
-"recharge": {
-	accuracy: true,
-	basePower: 0,
-	category: "Status",
-	desc: "The user restores 1/2 of its maximum HP, rounded half up.",
-	shortDesc: "Heals the user by 50% of its max HP.",
-	id: "recharge",
-	isNonstandard: true,
-	isViable: true,
-	name: "Recharge",
-	pp: 10,
-	priority: 0,
-	isSnatchable: true,
-	heal: [1, 2],
-	secondary: false,
-	target: "self",
-	type: "Electric"
-},
-"icystalagmites": {
-	accuracy: true,
-	basePower: 0,
-	category: "Status",
-	desc: "The user lays a trap of levitating pillars of ice around the opposing team. Factors Ice weakness.",
-	shortDesc: "Hurts foes on switch-in. Factors Ice weakness.",
-	id: "icystalagmites",
-	isNonstandard: true,
-	isViable: true,
-	name: "Icy Stalagmites",
-	pp: 20,
-	priority: 0,
-	isBounceable: true,
-	sideCondition: 'icystalagmites',
-	effect: {
-	// this is a side condition
-		onStart: function (side) {
-		var typeMod = this.clampIntRange(this.getEffectiveness('Ice', pokemon), -6, 6);
-		this.heal(pokemon.maxhp * Math.pow(2, typeMod) / 8);
-	},
-	secondary: false,
-	target: "foeSide",
-	type: "Ice"
-},
+/*The code for moves
+It is in this order:
+	- normal moves
+	- terrain moves
+*/
 "arcticbeam": {
 	accuracy: 100,
 	basePower: 90,
@@ -226,121 +20,20 @@ exports.BattleMoves = {
 	target: "normal",
 	type: "Ice"
 },
-"pixiestorm": {
-	num: -13,
+"catclaw": {
 	accuracy: 100,
-	basePower: 120,
+	basePower: 50,
 	category: "Physical",
-	desc: "Deals damage to one adjacent target. If the target lost HP, the user takes recoil damage equal to 33% that HP, rounded half up, but not less than 1HP. Makes contact.",
-	shortDesc: "Has 33% recoil.",
-	id: "pixiestorm",
-	isNonstandard: true,
-	isViable: true,
-	name: "Pixie Storm",
-	pp: 5,
-	priority: 0,
-	isContact: true,
-	recoil: [33, 100],
-	secondary: false,
-	target: "normal",
-	type: "Fairy"
-},
-"spectralburst": {
-	accuracy: 90,
-	basePower: 140,
-	category: "Special",
-	desc: "The user directs a fury of otherworldly energy at the opponent. Harshly lowers the user's Special-Attack.",
-	shortDesc: "Lowers the user's Sp. Atk by 2.",
-	id: "spectralburst",
-	isNonstandard: true,
-	isViable: true,
-	name: "Spectral Burst",
-	pp: 5,
-	priority: 0,
-	effects: {
-		self: {
-			boosts: {
-				spa: -2
-			}
-		}
-	},
-	secondary: false,
-	target: "normal",
-	type: "Ghost"
-},
-"tailslam": {
-	accuracy: 100,
-	basePower: 100,
-	category: "Physical",
-	desc: "Slams the foe using it/'s powerful tail. Deals damage to one adjacent target. Makes contact.",
+	desc: "Claws the opponent.",
 	shortDesc: "No additional effect.",
-	id: "tailslam",
+	id: "catclaw",
 	isNonstandard: true,
-	name: "Tail Slam",
+	name: "Cat Claw",
 	pp: 10,
 	priority: 0,
 	isContact: true,
 	secondary: false,
 	target: "normal",
-	type: "Normal"
-},
-"electroflash": {
-	accuracy: 70,
-	basePower: 0,
-	category: "Status",
-	desc: " A strong pulse of light paralyses the opponent.",
-	shortDesc: "Paralyzes the target.",
-	id: "electroflash",
-	isNonstandard: true,
-	isViable: true,
-	name: "Electro Flash",
-	pp: 20,
-	priority: 0,
-	status: 'par',
-	affectedByImmunities: true,
-	secondary: false,
-	target: "normal",
-	type: "Electric"
-},
-"venomslash": {
-	accuracy: 100,
-	basePower: 120,
-	category: "Physical",
-	desc: "The user slashes the foe with corrosive blades, claws, etc. The user receives 25% recoil of the damage dealt.",
-	shortDesc: "Has 25% recoil.",
-	id: "venomslash",
-	isNonstandard: true,
-	isViable: true,
-	name: "Venom Slash",
-	pp: 10,
-	priority: 0,
-	isContact: true,
-	recoil: [25, 100],
-	secondary: false,
-	target: "normal",
-	type: "Poison"
-}
-"curingbell": {
-	accuracy: true,
-	basePower: 0,
-	category: "Status",
-	desc: "Every Pokemon in the user's party is cured of its major status problem.",
-	shortDesc: "Cures the user's party of all status conditions.",
-	id: "curingbell",
-	isNonstandard: true,
-	isViable: true,
-	name: "Curing Bell",
-	pp: 10,
-	priority: 0,
-	isSnatchable: true,
-	onHit: function (pokemon, source) {
-		var side = pokemon.side;
-		for (var i = 0; i < side.pokemon.length; i++) {
-			side.pokemon.status = '';
-		}
-			this.add('-cureteam', source, '[from] move: CuringBell');
-		},
-	target: "allyTeam",
 	type: "Normal"
 },
 "concealedpower": {
@@ -605,6 +298,63 @@ exports.BattleMoves = {
 	target: "normal",
 	type: "Fairy"
 },
+"curingbell": {
+	accuracy: true,
+	basePower: 0,
+	category: "Status",
+	desc: "Every Pokemon in the user's party is cured of its major status problem.",
+	shortDesc: "Cures the user's party of all status conditions.",
+	id: "curingbell",
+	isNonstandard: true,
+	isViable: true,
+	name: "Curing Bell",
+	pp: 10,
+	priority: 0,
+	isSnatchable: true,
+	onHit: function (pokemon, source) {
+		var side = pokemon.side;
+		for (var i = 0; i < side.pokemon.length; i++) {
+			side.pokemon.status = '';
+		}
+			this.add('-cureteam', source, '[from] move: CuringBell');
+		},
+	target: "allyTeam",
+	type: "Normal"
+},
+"dragonbite": {
+	accuracy: 100,
+	basePower: 75,
+	category: "Physical",
+	desc: "Crushes the foe with powerful jaws, and may flinch.",
+	shortDesc: "10% chance to flinch",
+	id: "dragonbite",
+	isNonstandard: true,
+	name: "Dragon Bite",
+	pp: 10,
+	isContact: true,
+	secondary: {
+		chance: 10,
+		volatileStatus: 'flinch'
+	},
+	isTarget: "normal",
+	type: "Dragon"
+},
+"detonation": {
+	accuracy: 100,
+	basePower: 250,
+	category: "Physical",
+	desc: "The user explodes and leaves a huge crater in its place. The user faints.",
+	shortDesc: "Hits every Pokemon on the battlefield. The user faints.",
+	id: "detonation",
+	isNonstandard: true,
+	name: "Detonation",
+	pp: 5,
+	priority: 0,
+	selfdestruct: true,
+	secondary: false,
+	target: "allAdjacent",
+	type: "Normal"
+},
 "frozenfist": {
 	accuracy: 100,
 	basePower: 80,
@@ -625,68 +375,66 @@ exports.BattleMoves = {
 	target: "normal",
 	type: "Ice"
 },
-"wizardfist": {
+"flashfreeze": {
 	accuracy: 100,
-	basePower: 80,
-	category: "Physical",
-	desc: "Deals damage to one adjacent target with a 10% chance to confuse it.",
-	shortDesc: "10% chance to confuse the target.",
-	id: "wizardfist",
+	basePower: 40,
+	category: "Special",
+	desc: "Uses a quick blast of cold air to chill the foe. Priority +1.",
+	shortDesc: "Usually goes first.",
+	id: "flashfreeze",
 	isNonstandard: true,
 	isViable: true,
-	name: "Wizard Fist",
-	pp: 15,
-	priority: 0,
-	isContact: true,
-	secondary: {
-		chance: 10,
-		volatileStatus: 'confusion'
-	},
-	target: "normal",
-	type: "Psychic"
-},
-"wraithfist": {
-	accuracy: 100,
-	basePower: 80,
-	category: "Physical",
-	desc: "Deals damage to one adjacent target with a 10% chance to flinch it.",
-	shortDesc: "10% chance to flinch the target.",
-	id: "wraithfist",
-	isNonstandard: true,
-	isViable: true,
-	name: "Wraith Fist",
-	pp: 15,
-	priority: 0,
-	isContact: true,
-	secondary: {
-		chance: 10,
-		volatileStatus: 'flinch'
-	},
-	target: "normal",
-	type: "Ghost"
-},
-"catclaw": {
-	accuracy: 100,
-	basePower: 50,
-	category: "Physical",
-	desc: "Claws the opponent.",
-	shortDesc: "No additional effect.",
-	id: "catclaw",
-	isNonstandard: true,
-	name: "Cat Claw",
-	pp: 10,
-	priority: 0,
-	isContact: true,
+	name: "Flash Freeze",
+	pp: 20,
+	priority: 1,
 	secondary: false,
 	target: "normal",
-	type: "Normal"
+	type: "Ice"
+},
+"flingpebbles": {
+	accuracy: 100,
+	basePower: 40,
+	category: "Physical",
+	desc: "The user hurls small rocks at the opponent.",
+	shortDesc: "Does damage to one adjacent target. No secondary effect",
+	id: "flingpebbles",
+	isNonstandard: true,
+	name: "Fling Pebbles",
+	pp: 45,
+	priority: 0,
+	secondary: false,
+	target: "normal",
+	type: "Rock"
+},
+"icystalagmites": {
+	accuracy: true,
+	basePower: 0,
+	category: "Status",
+	desc: "The user lays a trap of levitating pillars of ice around the opposing team. Factors Ice weakness.",
+	shortDesc: "Hurts foes on switch-in. Factors Ice weakness.",
+	id: "icystalagmites",
+	isNonstandard: true,
+	isViable: true,
+	name: "Icy Stalagmites",
+	pp: 20,
+	priority: 0,
+	isBounceable: true,
+	sideCondition: 'icystalagmites',
+	effect: {
+	// this is a side condition
+		onStart: function (side) {
+		var typeMod = this.clampIntRange(this.getEffectiveness('Ice', pokemon), -6, 6);
+		this.heal(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+	},
+	secondary: false,
+	target: "foeSide",
+	type: "Ice"
 },
 "jump": {
 	accuracy: 65,
 	basePower: 60,
 	category: "Physical",
-	desc: "Deals damage to one adjacent or non-adjacent target. This attack charges on the first turn and strikes on the second. On the first turn, the user avoids all attacks other than Gust, Hurricane, Sky Uppercut, Smack Down, Thunder, and Twister. The user cannot make a move between turns. If the user is holding a Power Herb, the move completes in one turn. This move cannot be used while Gravity is in effect. Makes contact. (Field: Can be used to fly to a previously visited area.)",
-	shortDesc: "2 turn attack.",
+	desc: "Deals damage to one adjacent or non-adjacent target. This attack charges on the first turn and strikes on the second. On the first turn, the user avoids all attacks other than Gust, Hurricane, Sky Uppercut, Smack Down, Thunder, and Twister. The user cannot make a move between turns. If the user is holding a Power Herb, the move completes in one turn. This move cannot be used while Gravity is in effect. Makes contact. (Field: Can be used to fly to a previously visited area.)",	shortDesc: "2 turn attack.",
 	id: "jump",
 	isNonstandard: true,
 	name: "Jump",
@@ -730,6 +478,21 @@ exports.BattleMoves = {
 	target: "any",
 	type: "Flying"
 },
+"kineticslap": {
+	accuracy: 100,
+	basePower: 40,
+	category: "Physical",
+	desc: "The user slaps the opponent with a fist of concentrated matter.",
+	shortDesc: "Does damage to one adjacent target. No secondary effect",
+	id: "kineticslap",
+	isNonstandard: true,
+	name: "Kinetic Slap",
+	pp: 45,
+	priority: 0,
+	secondary: false,
+	target: "normal",
+	type: "Psychic"
+},
 "landslide": {
 	accuracy: 100,
 	basePower: 100,
@@ -745,88 +508,6 @@ exports.BattleMoves = {
 	secondary: false,
 	target: "normal",
 	type: "Rock"
-},
-"swordslash": {
-	accuracy: 100,
-	basePower: 80,
-	category: "Physical",
-	desc: "Slashes with a sword against the foe.",
-	shortDesc: "No additional effect.",
-	id: "swordslash",
-	name: "Sword Slash",
-	pp: 10,
-	priority: 0,
-	isContact: false,
-	secondary: false,
-	target: "normal",
-	type: "Steel"
-},
-"tornadopunch": {
-	accuracy: 95,
-	basePower: 30,
-	category: "Physical",
-	desc: "Fires a tornado of punches at the opponent.",
-	shortDesc: "Hits 2-5 times.",
-	id: "tornadopunch",
-	isNonstandard: true,
-	name: "Tornado Punch",
-	pp: 10,
-	isContact: true,
-	multiHit: [2, 5],
-	secondary: false,
-	isTarget: "normal",
-	type: "Fighting"
-},
-"tornadokick": {
-	accuracy: 95,
-	basePower: 90,
-	category: "Physical",
-	desc: "Fires a powerful kick at the opponent that rarely causes the opponent to flinch.",
-	shortDesc: "10% chance to flinch the opponent.",
-	id: "tornadokick",
-	isNonstandard: true,
-	name: "Tornado Kick",
-	pp: 10,
-	isContact: true,
-	secondary: {
-		chance: 10,
-		volatileStatus: 'flinch'
-	},
-	isTarget: "normal",
-	type: "Fighting"
-},
-"dragonbite": {
-	accuracy: 100,
-	basePower: 75,
-	category: "Physical",
-	desc: "Crushes the foe with powerful jaws, and may flinch.",
-	shortDesc: "10% chance to flinch",
-	id: "dragonbite",
-	isNonstandard: true,
-	name: "Dragon Bite",
-	pp: 10,
-	isContact: true,
-	secondary: {
-		chance: 10,
-		volatileStatus: 'flinch'
-	},
-	isTarget: "normal",
-	type: "Dragon"
-},
-"metalslam": {
-	accuracy: 100,
-	basePower: 100,
-	category: "Physical",
-	desc: "User slams themselves against the opponent.",
-	shortDesc: "No secondary effects.",
-	id: "metalslam",
-	isNonstandard: true,
-	name: "Metal Slam",
-	pp: 5,
-	isContact: true,
-	secondary: false,
-	isTarget: "normal",
-	type: "Steel"
 },
 "magnify": {
 	accuracy: true,
@@ -846,6 +527,92 @@ exports.BattleMoves = {
 	secondary: false,
 	target: "self",
 	type: "Electric"
+},
+"metalslam": {
+	accuracy: 100,
+	basePower: 100,
+	category: "Physical",
+	desc: "User slams themselves against the opponent.",
+	shortDesc: "No secondary effects.",
+	id: "metalslam",
+	isNonstandard: true,
+	name: "Metal Slam",
+	pp: 5,
+	isContact: true,
+	secondary: false,
+	isTarget: "normal",
+	type: "Steel"
+},
+"pixiestorm": {
+	num: -13,
+	accuracy: 100,
+	basePower: 120,
+	category: "Physical",
+	desc: "Deals damage to one adjacent target. If the target lost HP, the user takes recoil damage equal to 33% that HP, rounded half up, but not less than 1HP. Makes contact.",
+	shortDesc: "Has 33% recoil.",
+	id: "pixiestorm",
+	isNonstandard: true,
+	isViable: true,
+	name: "Pixie Storm",
+	pp: 5,
+	priority: 0,
+	isContact: true,
+	recoil: [33, 100],
+	secondary: false,
+	target: "normal",
+	type: "Fairy"
+},
+"recharge": {
+	accuracy: true,
+	basePower: 0,
+	category: "Status",
+	desc: "The user restores 1/2 of its maximum HP, rounded half up.",
+	shortDesc: "Heals the user by 50% of its max HP.",
+	id: "recharge",
+	isNonstandard: true,
+	isViable: true,
+	name: "Recharge",
+	pp: 10,
+	priority: 0,
+	isSnatchable: true,
+	heal: [1, 2],
+	secondary: false,
+	target: "self",
+	type: "Electric"
+},
+"regulatorwave": {
+	accuracy: 100,
+	basePower: 80,
+	category: "Special",
+	desc: "The user emits a blast of energy that hits multiple foes..",
+	shortDesc: "No additional effect. Hits all adjacent foes.",
+	id: "regulatorwave",
+	isNonstandard: true,
+	isViable: true,
+	name: "Regulator Wave",
+	pp: 20,
+	priority: 0,
+	secondary: false,
+	target: "allAdjacentFoes",
+	type: "Normal"
+},
+"rekindle": {
+	accuracy: true,
+	basePower: 0,
+	category: "Status",
+	desc: "The user restores 1/2 of its maximum HP, rounded half up.",
+	shortDesc: "Heals the user by 50% of its max HP.",
+	id: "rekindle",
+	isNonstandard: true,
+	isViable: true,
+	name: "Rekindle",
+	pp: 10,
+	priority: 0,
+	isSnatchable: true,
+	heal: [1, 2],
+	secondary: false,
+	target: "self",
+	type: "Fire"
 },
 "ripple": {
 	accuracy: 100,
@@ -871,6 +638,244 @@ exports.BattleMoves = {
 	target: "normal",
 	type: "Water"
 },
+"spectralburst": {
+	accuracy: 90,
+	basePower: 140,
+	category: "Special",
+	desc: "The user directs a fury of otherworldly energy at the opponent. Harshly lowers the user's Special-Attack.",
+	shortDesc: "Lowers the user's Sp. Atk by 2.",
+	id: "spectralburst",
+	isNonstandard: true,
+	isViable: true,
+	name: "Spectral Burst",
+	pp: 5,
+	priority: 0,
+	effects: {
+		self: {
+			boosts: {
+				spa: -2
+			}
+		}
+	},
+	secondary: false,
+	target: "normal",
+	type: "Ghost"
+},
+"swordslash": {
+	accuracy: 100,
+	basePower: 80,
+	category: "Physical",
+	desc: "Slashes with a sword against the foe.",
+	shortDesc: "No additional effect.",
+	id: "swordslash",
+	name: "Sword Slash",
+	pp: 10,
+	priority: 0,
+	isContact: false,
+	secondary: false,
+	target: "normal",
+	type: "Steel"
+},
+"tailslam": {
+	accuracy: 100,
+	basePower: 100,
+	category: "Physical",
+	desc: "Slams the foe using it/'s powerful tail. Deals damage to one adjacent target. Makes contact.",
+	shortDesc: "No additional effect.",
+	id: "tailslam",
+	isNonstandard: true,
+	name: "Tail Slam",
+	pp: 10,
+	priority: 0,
+	isContact: true,
+	secondary: false,
+	target: "normal",
+	type: "Normal"
+},
+"thunderwave": {
+	accuracy: 70,
+	basePower: 0,
+	category: "Status",
+	desc: " A strong pulse of light paralyses the opponent.",
+	shortDesc: "Paralyzes the target.",
+	id: "thunderwave",
+	isNonstandard: true,
+	isViable: true,
+	name: "Thunder Wave",
+	pp: 20,
+	priority: 0,
+	status: 'par',
+	affectedByImmunities: true,
+	secondary: false,
+	target: "normal",
+	type: "Electric"
+},
+"tornadokick": {
+	accuracy: 95,
+	basePower: 90,
+	category: "Physical",
+	desc: "Fires a powerful kick at the opponent that rarely causes the opponent to flinch.",
+	shortDesc: "10% chance to flinch the opponent.",
+	id: "tornadokick",
+	isNonstandard: true,
+	name: "Tornado Kick",
+	pp: 10,
+	isContact: true,
+	secondary: {
+		chance: 10,
+		volatileStatus: 'flinch'
+	},
+	isTarget: "normal",
+	type: "Fighting"
+},
+"tornadopunch": {
+	accuracy: 95,
+	basePower: 30,
+	category: "Physical",
+	desc: "Fires a tornado of punches at the opponent.",
+	shortDesc: "Hits 2-5 times.",
+	id: "tornadopunch",
+	isNonstandard: true,
+	name: "Tornado Punch",
+	pp: 10,
+	isContact: true,
+	multiHit: [2, 5],
+	secondary: false,
+	isTarget: "normal",
+	type: "Fighting"
+},
+"unnaturalslice": {
+	accuracy: 100,
+	basePower: 90,
+	category: "Physical",
+	desc: "Deals damage to one adjacent target with a higher chance for a critical hit. Makes contact. Hits Ghost-types for super effective damage.",
+	shortDesc: "High critical hit ratio. Hits Ghost-types for super effective damage.",
+	id: "unnaturalslice",
+	isNonstandard: true,
+	isViable: true,
+	name: "Unnatural Slice",
+	pp: 15,
+	priority: 0,
+	isContact: true,
+	critRatio: 0,
+	secondary: false,
+	target: "normal",
+	type: "Normal"
+	getEffectiveness: function (source, target, pokemon) {
+		var type = source.type || source;
+		var totalTypeMod = 0;
+		var types = target.getTypes && target.getTypes() || target.types;
+		for (var i = 0; i < types.length; i++) {
+			if (!this.data.TypeChart[types]) continue;
+			if (types === 'Ghost') {
+				totalTypeMod++;
+				continue;
+			}
+			var typeMod = this.data.TypeChart[types].damageTaken[type];
+			if (typeMod === 1) { // super-effective
+				totalTypeMod++;
+			}
+			if (typeMod === 2) { // resist
+				totalTypeMod--;
+			}
+		}
+		return totalTypeMod;
+	}
+},
+"venomslash": {
+	accuracy: 100,
+	basePower: 120,
+	category: "Physical",
+	desc: "The user slashes the foe with corrosive blades, claws, etc. The user receives 25% recoil of the damage dealt.",
+	shortDesc: "Has 25% recoil.",
+	id: "venomslash",
+	isNonstandard: true,
+	isViable: true,
+	name: "Venom Slash",
+	pp: 10,
+	priority: 0,
+	isContact: true,
+	recoil: [25, 100],
+	secondary: false,
+	target: "normal",
+	type: "Poison"
+},
+"voidbreaker": {
+	accuracy: 90,
+	basePower: 120,
+	category: "Physical",
+	desc: "Deals damage to one adjacent or non-adjacent target. If the target lost HP, the user takes recoil damage equal to 33% that HP, rounded half up, but not less than 1HP. Makes contact.",
+	shortDesc: "Has 33% recoil.",
+	id: "voidbreaker",
+	isNonstandard: true,
+	isViable: true,
+	name: "Void Breaker",
+	pp: 15,
+	priority: 0,
+	isContact: true,
+	recoil: [33, 100],
+	secondary: false,
+	target: "any",
+	type: "Dark"
+},
+"weakshock": {
+	accuracy: 100,
+	basePower: 40,
+	category: "Special",
+	desc: "The opponent is struck with a weak jolt of electricity.",
+	shortDesc: "Does damage to one adjacent target. No secondary effect",
+	id: "weakshock",
+	isNonstandard: true,
+	name: "Weak Shock",
+	pp: 45,
+	priority: 0,
+	secondary: false,
+	target: "normal",
+	type: "Electric"
+},
+"wizardfist": {
+	accuracy: 100,
+	basePower: 80,
+	category: "Physical",
+	desc: "Deals damage to one adjacent target with a 10% chance to confuse it.",
+	shortDesc: "10% chance to confuse the target.",
+	id: "wizardfist",
+	isNonstandard: true,
+	isViable: true,
+	name: "Wizard Fist",
+	pp: 15,
+	priority: 0,
+	isContact: true,
+	secondary: {
+		chance: 10,
+		volatileStatus: 'confusion'
+	},
+	target: "normal",
+	type: "Psychic"
+},
+"wraithfist": {
+	accuracy: 100,
+	basePower: 80,
+	category: "Physical",
+	desc: "Deals damage to one adjacent target with a 10% chance to flinch it.",
+	shortDesc: "10% chance to flinch the target.",
+	id: "wraithfist",
+	isNonstandard: true,
+	isViable: true,
+	name: "Wraith Fist",
+	pp: 15,
+	priority: 0,
+	isContact: true,
+	secondary: {
+		chance: 10,
+		volatileStatus: 'flinch'
+	},
+	target: "normal",
+	type: "Ghost"
+},
+
+//Alphabetized Terrain Moves:
+
 "desert": {
 	accuracy: true,
 	basePower: 0,
@@ -912,6 +917,7 @@ exports.BattleMoves = {
 	target: "all",
 	type: "Ground"
 },
+"glacier": {
 "glacier": {
 	accuracy: true,
 	basePower: 0,
@@ -1057,36 +1063,5 @@ exports.BattleMoves = {
 	secondary: false,
 	target: "all",
 	type: "Poison"
-},
-"icystalagmites": {
-
-	accuracy: true,
-	basePower: 0,
-	category: "Status",
-
-	desc: "The user surrounds its side of the field with health-restoring orbs that heal allies switching into battle. The amount of HP healed is based upon weakness to Psychic-type attacks.",
-	shortDesc: "The user surrounds their side of the field with healing orbs. Health restored depends on weakness to Psychic.",
-	id: "healthorbs",
-	isNonstandard: true,
-	isViable: true,
-	name: "Health Orbs",
-	pp: 20,
-	priority: 0,
-	sideCondition: 'healthorbs',
-	effect: {
-		// this is a side condition
-		onStart: function (side) {
-			this.add('-sidestart', side, 'move: Health Orbs');
-		},
-		onSwitchIn: function (pokemon) {
-			var typeMod = this.clampIntRange(this.getEffectiveness('Psychic', pokemon), -6, 6);
-			this.heal(pokemon.maxhp * Math.pow(2, typeMod) / 8);
-		}
-	},
-
-	secondary: false,
-	target: "allySide",
-	type: "Psychic"
 }
-
 };
