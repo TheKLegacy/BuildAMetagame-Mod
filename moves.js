@@ -406,6 +406,33 @@ It is in this order:
 	target: "normal",
 	type: "Rock"
 },
+"healthorbs": {
+	accuracy: true,
+	basePower: 0,
+	category: "Status",
+	desc: "The user surrounds its side of the field with health-restoring orbs that heal allies switching into battle. The amount of HP healed is based upon weakness to Psychic-type attacks.",
+	shortDesc: "The user surrounds their side of the field with healing orbs. Health restored depends on weakness to Psychic.",
+	id: "healthorbs",
+	isNonstandard: true,
+	isViable: true,
+	name: "Health Orbs",
+	pp: 20,
+	priority: 0,
+	sideCondition: 'healthorbs',
+	effect: {
+		// this is a side condition
+		onStart: function (side) {
+			this.add('-sidestart', side, 'move: Health Orbs');
+		},
+		onSwitchIn: function (pokemon) {
+			var typeMod = this.clampIntRange(this.getEffectiveness('Psychic', pokemon), -6, 6);
+			this.heal(pokemon.maxhp * Math.pow(2, typeMod) / 8);
+		}
+	},
+	secondary: false,
+	target: "allySide",
+	type: "Psychic"
+},
 "icystalagmites": {
 	accuracy: true,
 	basePower: 0,
