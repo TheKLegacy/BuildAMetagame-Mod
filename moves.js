@@ -4,6 +4,25 @@ It is in this order:
 	- normal moves
 	- terrain moves
 */
+"absorbmatter":{
+	accuracy: true,
+	category: "Status",
+	desc:"Heals a pokemon and boosts it's defense."
+	shortDesc:"Heals a pokemon and boosts it's defense."
+	id: "absorbmatter",
+	isNonstandard: true,
+	isViable: true,
+	name: "Absorb Matter",
+	pp: 10,
+	priority: 0,
+	secondary: false,
+	heal: [3, 10],
+	boosts: {
+			def: 1
+		},
+	target: "self",
+	type: "Normal"
+},
 "arcticbeam": {
 	accuracy: 100,
 	basePower: 90,
@@ -808,6 +827,27 @@ It is in this order:
 		}
 		return totalTypeMod;
 	}
+},
+//may heal whoever you attack #yolo
+"vampiresbite"{
+	accuracy: 100,
+	basePower: 40,
+	category: "Physical",
+	desc: "Drains life from the opponent.",
+	shortDesc: "Drains life from the opponent.",
+	id: "vampiresbite",
+	isNonstandard: true,
+	isViable: true,
+	name: "Vampire's Bite",
+	pp: 10,
+	priority: 0,
+	isContact: true,
+	secondary:  { onStart: function (pokemon) {
+			this.heal(10);
+			}
+		},
+	target: "normal",
+	type: "dark"
 },
 "venomslash": {
 	accuracy: 100,
