@@ -828,7 +828,7 @@ It is in this order:
 		return totalTypeMod;
 	}
 },
-//may heal whoever you attack #yolo
+//may not work the way we want
 "vampiresbite"{
 	accuracy: 100,
 	basePower: 40,
@@ -842,10 +842,7 @@ It is in this order:
 	pp: 10,
 	priority: 0,
 	isContact: true,
-	secondary:  { onStart: function (pokemon) {
-			this.heal(10);
-			}
-		},
+	drain: [100 , 0]
 	target: "normal",
 	type: "dark"
 },
