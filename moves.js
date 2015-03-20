@@ -1356,7 +1356,6 @@ It is in this order:
 	type: "Ground"
 },
 "glacier": {
-"glacier": {
 	accuracy: true,
 	basePower: 0,
 	category: "Status",
