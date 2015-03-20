@@ -15,6 +15,7 @@ It is in this order:
 	name: "Absorb Matter",
 	pp: 10,
 	priority: 0,
+	flags: {heal: 1},
 	secondary: false,
 	heal: [3, 10],
 	boosts: {
@@ -35,6 +36,7 @@ It is in this order:
 	name: "Arctic Beam",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Ice"
@@ -50,6 +52,7 @@ It is in this order:
 	name: "Cat Claw",
 	pp: 10,
 	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
 	isContact: true,
 	secondary: false,
 	target: "normal",
@@ -67,6 +70,7 @@ It is in this order:
 	name: "Concealed Power",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	onModifyMove: function (move, pokemon) {
 		move.type = pokemon.hpType || 'Dark';
 	},
@@ -84,6 +88,7 @@ It is in this order:
 	name: "Concealed Power Bug",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Bug"
@@ -98,6 +103,7 @@ It is in this order:
 	name: "Concealed Power Dark",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Dark"
@@ -112,6 +118,7 @@ It is in this order:
 	name: "Concealed Power Dragon",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Dragon"
@@ -127,6 +134,7 @@ It is in this order:
 	name: "Concealed Power Electric",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Electric"
@@ -142,6 +150,7 @@ It is in this order:
 	name: "Concealed Power Fighting",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Fighting"
@@ -157,6 +166,7 @@ It is in this order:
 	name: "Concealed Power Fire",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Fire"
@@ -171,6 +181,7 @@ It is in this order:
 	name: "Concealed Power Flying",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Flying"
@@ -185,6 +196,7 @@ It is in this order:
 	name: "Concealed Power Ghost",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Ghost"
@@ -200,6 +212,7 @@ It is in this order:
 	name: "Concealed Power Grass",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Grass"
@@ -214,6 +227,7 @@ It is in this order:
 	name: "Concealed Power Ground",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Ground"
@@ -229,6 +243,7 @@ It is in this order:
 	name: "Concealed Power Ice",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Ice"
@@ -243,6 +258,7 @@ It is in this order:
 	name: "Concealed Power Poison",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Poison"
@@ -257,6 +273,7 @@ It is in this order:
 	name: "Concealed Power Psychic",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Psychic"
@@ -271,6 +288,7 @@ It is in this order:
 	name: "Concealed Power Rock",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Rock"
@@ -285,6 +303,7 @@ It is in this order:
 	name: "Concealed Power Steel",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Steel"
@@ -299,6 +318,7 @@ It is in this order:
 	name: "Concealed Power Water",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Water"
@@ -313,6 +333,7 @@ It is in this order:
 	name: "Concealed Power Fairy",
 	pp: 15,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Fairy"
@@ -329,6 +350,7 @@ It is in this order:
 	name: "Curing Bell",
 	pp: 10,
 	priority: 0,
+	flags: {snatch: 1, sound: 1, distance: 1, authentic: 1},
 	isSnatchable: true,
 	onHit: function (pokemon, source) {
 		var side = pokemon.side;
@@ -350,6 +372,7 @@ It is in this order:
 	isNonstandard: true,
 	name: "Dragon Bite",
 	pp: 10,
+	flags: {contact: 1, protect: 1, mirror: 1},
 	isContact: true,
 	secondary: {
 		chance: 10,
@@ -369,6 +392,7 @@ It is in this order:
 	name: "Detonation",
 	pp: 5,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	selfdestruct: true,
 	secondary: false,
 	target: "allAdjacent",
@@ -386,6 +410,7 @@ It is in this order:
 	name: "Frozen Fist",
 	pp: 15,
 	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
 	isContact: true,
 	secondary: {
 		chance: 10,
@@ -406,6 +431,7 @@ It is in this order:
 	name: "Flash Freeze",
 	pp: 20,
 	priority: 1,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Ice"
@@ -421,6 +447,7 @@ It is in this order:
 	name: "Fling Pebbles",
 	pp: 45,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Rock"
@@ -464,6 +491,7 @@ It is in this order:
 	name: "Icy Stalagmites",
 	pp: 20,
 	priority: 0,
+	flags: {reflectable: 1},
 	isBounceable: true,
 	sideCondition: 'icystalagmites',
 	effect: {
@@ -486,6 +514,7 @@ It is in this order:
 	name: "Jump",
 	pp: 20,
 	priority: 0,
+	flags: {contact: 1, protect: 1, charge: 1, mirror: 1, gravity: 1, distance: 1},
 	isContact: true,
 	isTwoTurnMove: true,
 	onTry: function (attacker, defender, move) {
@@ -535,6 +564,7 @@ It is in this order:
 	name: "Kinetic Slap",
 	pp: 45,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Psychic"
@@ -550,6 +580,7 @@ It is in this order:
 	name: "Landslide",
 	pp: 10,
 	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
 	isContact: true,
 	secondary: false,
 	target: "normal",
@@ -566,6 +597,7 @@ It is in this order:
 	name: "Magnify",
 	pp: 24,
 	priority: 0,
+	flags: {snatch: 1},
 	isSnatchable: true,
 	boosts: {
 		acc: 2
@@ -584,6 +616,8 @@ It is in this order:
 	isNonstandard: true,
 	name: "Metal Slam",
 	pp: 5,
+	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
 	isContact: true,
 	secondary: false,
 	isTarget: "normal",
@@ -602,6 +636,7 @@ It is in this order:
 	name: "Pixie Storm",
 	pp: 5,
 	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
 	isContact: true,
 	recoil: [33, 100],
 	secondary: false,
@@ -620,6 +655,7 @@ It is in this order:
 	name: "Recharge",
 	pp: 10,
 	priority: 0,
+	flags: {snatch: 1, heal: 1},
 	isSnatchable: true,
 	heal: [1, 2],
 	secondary: false,
@@ -638,6 +674,7 @@ It is in this order:
 	name: "Regulator Wave",
 	pp: 20,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "allAdjacentFoes",
 	type: "Normal"
@@ -654,6 +691,7 @@ It is in this order:
 	name: "Rekindle",
 	pp: 10,
 	priority: 0,
+	flags: {snatch: 1, heal: 1},
 	isSnatchable: true,
 	heal: [1, 2],
 	secondary: false,
@@ -672,6 +710,7 @@ It is in this order:
 	name: "Ripple",
 	pp: 24,
 	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
 	isContact: true,
 	effects: {
 		chance: 100,
@@ -696,6 +735,7 @@ It is in this order:
 	name: "Spectral Burst",
 	pp: 5,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	effects: {
 		self: {
 			boosts: {
@@ -717,6 +757,7 @@ It is in this order:
 	name: "Sword Slash",
 	pp: 10,
 	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
 	isContact: false,
 	secondary: false,
 	target: "normal",
@@ -733,6 +774,7 @@ It is in this order:
 	name: "Tail Slam",
 	pp: 10,
 	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
 	isContact: true,
 	secondary: false,
 	target: "normal",
@@ -750,6 +792,7 @@ It is in this order:
 	name: "Thunder Wave",
 	pp: 20,
 	priority: 0,
+	flags: {protect: 1, reflectable: 1, mirror: 1},
 	status: 'par',
 	affectedByImmunities: true,
 	secondary: false,
@@ -766,6 +809,8 @@ It is in this order:
 	isNonstandard: true,
 	name: "Tornado Kick",
 	pp: 10,
+	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
 	isContact: true,
 	secondary: {
 		chance: 10,
@@ -784,6 +829,8 @@ It is in this order:
 	isNonstandard: true,
 	name: "Tornado Punch",
 	pp: 10,
+	priority: 0,
+	flags: {contact: 1, protect 1, mirror: 1, punch: 1},
 	isContact: true,
 	multiHit: [2, 5],
 	secondary: false,
@@ -802,6 +849,7 @@ It is in this order:
 	name: "Unnatural Slice",
 	pp: 15,
 	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
 	isContact: true,
 	critRatio: 0,
 	secondary: false,
@@ -841,6 +889,7 @@ It is in this order:
 	name: "Vampire's Bite",
 	pp: 10,
 	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
 	isContact: true,
 	drain: [100 , 0]
 	target: "normal",
@@ -858,6 +907,7 @@ It is in this order:
 	name: "Venom Slash",
 	pp: 10,
 	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
 	isContact: true,
 	recoil: [25, 100],
 	secondary: false,
@@ -876,6 +926,7 @@ It is in this order:
 	name: "Void Breaker",
 	pp: 15,
 	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
 	isContact: true,
 	recoil: [33, 100],
 	secondary: false,
@@ -893,6 +944,7 @@ It is in this order:
 	name: "Weak Shock",
 	pp: 45,
 	priority: 0,
+	flags: {protect: 1, mirror: 1},
 	secondary: false,
 	target: "normal",
 	type: "Electric"
@@ -909,6 +961,7 @@ It is in this order:
 	name: "Wizard Fist",
 	pp: 15,
 	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
 	isContact: true,
 	secondary: {
 		chance: 10,
@@ -929,6 +982,7 @@ It is in this order:
 	name: "Wraith Fist",
 	pp: 15,
 	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1, punch: 1},
 	isContact: true,
 	secondary: {
 		chance: 10,
@@ -952,6 +1006,7 @@ It is in this order:
 	name: "Desert",
 	pp: 8,
 	priority: 0,
+	flags: {},
 	weather: 'Desert',
 	onTry: function (target, source) {
 		if (this.isWeather(['desolateland', 'primordialsea', 'deltastream'])) {
@@ -994,6 +1049,7 @@ It is in this order:
 	name: "Glacier",
 	pp: 8,
 	priority: 0,
+	flags: {},
 	weather: 'Glacier',
 	onTry: function (target, source) {
 		if (this.isWeather(['desolateland', 'primordialsea', 'deltastream'])) {
@@ -1027,6 +1083,7 @@ It is in this order:
 	name: "Meadow",
 	pp: 8,
 	priority: 0,
+	flags: {},
 	weather: 'Meadow',
 	onTry: function (target, source) {
 		if (this.isWeather(['desolateland', 'primordialsea', 'deltastream'])) {
@@ -1068,6 +1125,7 @@ It is in this order:
 	name: "Ocean",
 	pp: 8,
 	priority: 0,
+	flags: {},
 	weather: 'Ocean',
 	onTry: function (target, source) {
 		if (this.isWeather(['desolateland', 'primordialsea', 'deltastream'])) {
@@ -1103,6 +1161,7 @@ It is in this order:
 	name: "Polluted Landscape",
 	pp: 8,
 	priority: 0,
+	flags: {},
 	weather: 'PollutedLandscape',
 	onTry: function (target, source) {
 		if (this.isWeather(['desolateland', 'primordialsea', 'deltastream'])) {
