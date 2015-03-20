@@ -742,6 +742,27 @@ It is in this order:
 	target: "normal",
 	type: "Fairy"
 },
+"nebulousmist": {
+	accuracy: 100,
+	basePower: 85,
+	category: "Special",
+	desc: "The user creates a dense mist that makes it hard for the target to avoid attacks.",
+	shortDesc: "Does damage to adjacent target. Lowers evasion by 1 stage.",
+	id: "nebulousmist",
+	isNonStandard: true,
+	name: "Nebulous Mist",
+	pp: 10,
+	priority: 0,
+        flags: {protect: 1, mirror: 1},
+	effects: {
+		chance: 100
+		boost: {
+			evasion: -1
+			}
+	},
+	target: "normal",
+	type: "Flying"
+},
 "nymphburst": {
 	accuracy: 90,
 	basePower: 130,
@@ -806,26 +827,6 @@ It is in this order:
 	secondary: false,
 	target: "normal",
 	type: "Fairy"
-},
-"nebulousmist": {
-	accuracy: 100,
-	basePower: 85,
-	category: "Special",
-	desc: "The user creates a dense mist that makes it hard for the target to avoid attacks.",
-	shortDesc: "Does damage to adjacent target. Lowers evasion by 1 stage.",
-	id: "nebulousmist",
-	isNonStandard: true,
-	name: "Nebulous Mist",
-	pp: 10,
-	priority: 0,
-	effects: {
-		chance: 100
-		boost: {
-			evasion: -1
-			}
-	},
-	target: "normal",
-	type: "Flying"
 },
 "recharge": {
 	accuracy: true,
