@@ -41,6 +41,25 @@ It is in this order:
 	target: "normal",
 	type: "Ice"
 },
+"brutaluppercut": {
+	accuracy: 90,
+	basePower: 120,
+	category: "Physical",
+	desc: "If the target lost HP, then the user takes recoil damage equal to 25% of the HP lost by the target, rounded half up, but not less than 1 HP.",
+	shortDesc: "Has 25% recoil.",
+	id: "brutaluppercut",
+	isNonstandard: true,
+	isViable: true,
+	name: "Brutal Uppercut",
+	pp: 5,
+	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
+	isContact: true,
+	recoil: [25, 100],
+	secondary: false,
+	target: "normal",
+	type: "Fighting"
+},
 "catclaw": {
 	accuracy: 100,
 	basePower: 50,
@@ -452,6 +471,48 @@ It is in this order:
 	target: "normal",
 	type: "Rock"
 },
+"flutter": {
+	accuracy: 95,
+	basePower: 75,
+	category: "Physical",
+	desc: "The user flutters around to damage the foe and increase its Speed by one stage.",
+	shortDesc: "Does damage and increases Speed.",
+	id: "flutter",
+	isNonstandard: true,
+	isViable: true,
+	name: "Flutter",
+	pp: 25,
+	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
+	isContact: true,
+	effects: {
+		chance: 100,
+		self: {
+			boosts: {
+				spe: 1
+			}
+		}
+	},
+	target: "normal",
+	type: "Flying"
+},
+"forceofnature": {
+	accuracy: 100,
+	basePower: 100,
+	category: "Physical",
+	desc: "This move has no additional effects.",
+	shortDesc: "Has no additional effects.",
+	id: "forceofnature",
+	isNonstandard: true,
+	isViable: true,
+	name: "Force Of Nature",
+	pp: 10,
+	priority: 0,
+	flags: {protect: 1, mirror: 1},
+	secondary: false,
+	target: "allAdjacentFoes",
+	type: "Ground"
+},
 "healthorbs": {
 	accuracy: true,
 	basePower: 0,
@@ -553,6 +614,25 @@ It is in this order:
 	target: "any",
 	type: "Flying"
 },
+"kineticrock": {
+	accuracy: 100,
+	basePower: 80,
+	category: "Special",
+	defensiveCategory: "Physical",
+	desc: "Deals damage on the based on the targets Defense instead of Special Defense.",
+	shortDesc: "Damages target based on Def, not SpD.",
+	id: "kineticrock",
+	isNonstandard: true,
+	isViable: true,
+	name: "Kinetic Rock",
+	pp: 15,
+	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
+	isContact: true,
+	secondary: false,
+	target: "normal",
+	type: "Rock"
+},
 "kineticslap": {
 	accuracy: 100,
 	basePower: 40,
@@ -585,6 +665,43 @@ It is in this order:
 	secondary: false,
 	target: "normal",
 	type: "Rock"
+},
+"leafturn": {
+	accuracy: 100,
+	basePower: 80,
+	category: "Special",
+	desc: "If this move is successful and the user has not fainted, the user switches out even if trapped and is replaced immediately by a selected party member. The user does not switch out if there are no party members that have not fainted.",
+	shortDesc: "User switches out after damaging the target.",
+	id: "leafturn",
+	isNonstandard: true,
+	isViable: true,
+	name: "Leaf Turn",
+	pp: 20,
+	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
+	isContact: true,
+	selfSwitch: true,
+	secondary: false,
+	target: "normal",
+	type: "Grass"
+},
+"leveldamage": {
+	accuracy: 100,
+	basePower: 0,
+	damage: 'level',
+	category: "Special",
+	desc: "Deals damage to the target equal to the user's level.",
+	shortDesc: "Deals damage equal to the user's level.",
+	id: "leveldamage",
+	isNonstandard: true,
+	isViable: true,
+	name: "Level Damage",
+	pp: 20,
+	priority: 0,
+	flags: {protect: 1, mirror: 1},
+	secondary: false,
+	target: "normal",
+	type: "Normal"
 },
 "magnify": {
 	accuracy: true,
@@ -622,6 +739,109 @@ It is in this order:
 	secondary: false,
 	isTarget: "normal",
 	type: "Steel"
+},
+"mysticwave": {
+	accuracy: 100,
+	basePower: 100,
+	category: "Special",
+	desc: "No additional effect.",
+	shortDesc: "No additional effect. Hits adjacent foes",
+	id: "mysticwave",
+	isNonstandard: true,
+	isViable: true,
+	name: "Mystic Wave",
+	pp: 5,
+	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1, sound: 1, authentic: 1},
+	isContact: true,
+	secondary: false,
+	target: "allAdjacentFoes",
+	type: "Fairy"
+},
+"meteorbarrage": {
+	accuracy: 100,
+	basePower: 25,
+	category: "Physical",
+	desc: "Hits two to five times. It has a 1/3 chance to hit two to three, and a 1/6 chance to hit four to five times.",
+	shortDesc: "Hits 2-5 times in one turn.",
+	id: "meteorbarrage",
+	isNonstandard: true,
+	isViable: true,
+	name: "Meteor Barrage",
+	pp: 15,
+	priority: 0,
+	flags: {protect: 1, mirror: 1},
+	multihit: [2, 5],
+	secondary: false,
+	target: "normal",
+	type: "Fairy"
+},
+"nebulousmist": {
+	accuracy: 100,
+	basePower: 85,
+	category: "Special",
+	desc: "The user creates a dense mist that makes it hard for the target to avoid attacks.",
+	shortDesc: "Does damage to adjacent target. Lowers evasion by 1 stage.",
+	id: "nebulousmist",
+	isNonStandard: true,
+	name: "Nebulous Mist",
+	pp: 10,
+	priority: 0,
+        flags: {protect: 1, mirror: 1},
+	effects: {
+		chance: 100
+		boost: {
+			evasion: -1
+			}
+	},
+	target: "normal",
+	type: "Flying"
+},
+"nymphburst": {
+	accuracy: 90,
+	basePower: 130,
+	category: "Special",
+	desc: "Lowers the user's Special Attack by two stages.",
+	shortDesc: "Lowers user's SpA by 2 stages",
+	id: "nymphburst",
+	isNonstandard: true,
+	isViable: true,
+	name: "Nymph Burst",
+	pp: 5,
+	priority: 0,
+	flags: {protect: 1, mirror: 1},
+	self: {
+		boosts: {
+			spa: -2
+		}
+	},
+	secondary: false,
+	target: "normal",
+	type: "Fairy",
+},
+"pixieblast": {
+	accuracy: 100,
+	basePower: 80,
+	category: "Special",
+	desc: "Has a 30% chance to raise the user's Defense by one stage.",
+	shortDesc: "30% chance to raise user's Def by 1 stage.",
+	id: "pixieblast",
+	isNonstandard: true,
+	isViable: true,
+	name: "Pixie Blast",
+	pp: 15,
+	priority: 0,
+	flags: {protect: 1, mirror: 1},
+	secondary: {
+		chance: 30,
+		self: {
+			boosts: {
+				spd: 1
+			}
+		}
+	},
+	target: "normal",
+	type: "Fairy"
 },
 "pixiestorm": {
 	num: -13,
@@ -723,6 +943,81 @@ It is in this order:
 	target: "normal",
 	type: "Water"
 },
+"rocketslam": {
+	accuracy: 100,
+	basePower: 40,
+	category: "Physical",
+	desc: "This move will almost always go first.",
+	shortDesc: "Will almost always go first.",
+	id: "rocketslam",
+	isNonstandard: true,
+	isViable: true,
+	name: "Rocket Slam",
+	pp: 20
+	priority: 2,
+	flags: {contact: 1, protect: 1, mirror: 1},
+	isContact: true,
+	secondary: false,
+	target: "normal",
+	type: "Steel"
+},
+"shocker": {
+	accuracy: 100,
+	basePower: 95,
+	category: "Physical",
+	desc: "The foe is shocked with a powerful thunder attack.",
+	shortDesc: "Shocks the foe with a thunder attack.",
+	id: "shocker",
+	isNonstandard: true,
+	isViable: true,
+	name: "Shocker",
+	pp: 10,
+	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
+	isContact: true,
+	secondary: false,
+	target: "normal",
+	type: "Electric"
+},
+"slidingkick": {
+	accuracy: 100,
+	basePower: 90,
+	category: "Physical",
+	desc: "Has a 20% chance to flinch the target.",
+	shortDesc: "20% chance to flinch the target.",
+	id: "slidingkick",
+	isNonstandard: true,
+	isViable: true,
+	name: "Sliding Kick",
+	pp: 20,
+	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
+	isContact: true,
+	secondary: {
+		chance: 20,
+		volatileStatus: 'flinch'
+	},
+	target: "normal",
+	type: "Fighting"
+},
+"souldrain": {
+	accuracy: 100,
+	basepower: 75,
+	category: "Special",
+	desc: "The user recovers 1/2 of the HP lost by the target, rounded half up.",
+	shortDesc: "User recovers 50% of damage dealt.",
+	id: "souldrain",
+	isNonstandard: true,
+	isViable: true,
+	name: "Soul Drain",
+	pp: 10,
+	priority: 0,
+	flags: {protect: 1, mirror: 1, heal: 1},
+	drain: [1, 2],
+	secondary: false,
+	target: "normal",
+	type: "Ghost"
+},
 "spectralburst": {
 	accuracy: 90,
 	basePower: 140,
@@ -746,6 +1041,30 @@ It is in this order:
 	secondary: false,
 	target: "normal",
 	type: "Ghost"
+},
+"starsmash": {
+	accuracy: 100,
+	basePower: 80,
+	category: "Physical",
+	desc: "Has a 10% chance to raise the user's Defense by one stage.",
+	shortDesc: "10% chance to raise user's Def by 1 stage.",
+	id: "starsmash",
+	isNonstandard: true,
+	isViable: true,
+	name: "Star Smash",
+	pp: 15,
+	priority: 0,
+	flags: {protect: 1, mirror: 1},
+	secondary: {
+		chance: 10,
+		self: {
+			boosts: {
+				def: 1
+			}
+		}
+	},
+	target: "normal",
+	type: "Fairy"
 },
 "swordslash": {
 	accuracy: 100,
