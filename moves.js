@@ -764,7 +764,7 @@ It is in this order:
 	target: "normal",
 	type: "Fairy",
 },
-pixieblast": {
+"pixieblast": {
 	accuracy: 100,
 	basePower: 80,
 	category: "Special",
