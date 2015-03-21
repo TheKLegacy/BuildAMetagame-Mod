@@ -24,6 +24,43 @@ It is in this order:
 	target: "self",
 	type: "Normal"
 },
+"abyssalslash": {
+	accuracy: 100,
+	basePower: 80,
+	category: "Physical",
+	desc: "Has a higher chance for a critical hit.",
+	shortDesc: "High critical hit ratio.",
+	id: "abyssalslash",
+	isNonstandard: true,
+	isViable: true,
+	name: "Abyssal Slash",
+	pp: 15,
+	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
+	isContact: true,
+	critRatio: 2,
+	secondary: false,
+	target: "normal",
+	type: "Water"
+},
+"airblade": {
+	accuracy: 100,
+	basePower: 80,
+	category: "Physical",
+	defensiveCategory: "Special",
+	desc: "Deals damage based on the target's Special Defense instead of Defense.",
+	shortDesc: "Damages target based on SpD, not Def.",
+	id: "airblade",
+	isNonstandard: true,
+	isViable: true,
+	name: "Air Blade",
+	pp: 10,
+	priority: 0,
+	flags: {protect: 1, mirror: 1},
+	secondary: false,
+	target: "normal",
+	type: "Flying"
+},
 "arcticbeam": {
 	accuracy: 100,
 	basePower: 90,
@@ -59,6 +96,26 @@ It is in this order:
 	secondary: false,
 	target: "normal",
 	type: "Fighting"
+},
+"buzzer": {
+	accuracy: 100,
+	basePower: 95,
+	category: "Special",
+	desc: "Has a 10% chance to flinch the target",
+	shortDesc: "10% chance to flinch the target",
+	id: "buzzer",
+	isNonstandard: true,
+	isViable: true,
+	name: "Buzzer",
+	pp: 10,
+	priority: 0,
+	flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
+	secondary: {
+		chance: 10,
+		volatileStatus: 'flinch'
+	},
+	target: "normal",
+	type: "Bug"
 },
 "catclaw": {
 	accuracy: 100,
@@ -417,6 +474,66 @@ It is in this order:
 	target: "allAdjacent",
 	type: "Normal"
 },
+"divebomb": {
+	accuracy: 100,
+	basePower: 120,
+	category: "Physical",
+	desc: "If the target lost HP, then the user takes recoil damage equal to 33% of the HP lost by the target, rounded half up, but not less than 1 HP.",
+	shortDesc: "Has 33% recoil.",
+	id: "divebomb",
+	isNonstandard: true,
+	isViable: true,
+	name: "Dive Bomb",
+	pp: 15,
+	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
+	isContact: true,
+	recoil: [33, 100],
+	secondary: false,
+	target: "normal",
+	type: "Flying"
+},
+"dragonslam": {
+	accuracy: 100,
+	basePower: 90,
+	category: "Physical",
+	desc: "This move has no addition effects.",
+	shortDesc: "Has no additional effects.",
+	id: "dragonslam",
+	isNonstandard: true,
+	isViable: true,
+	name: "Dragon Slam",
+	pp: 15,
+	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
+	isContact: true,
+	secondary: false,
+	target: "normal",
+	type: "Dragon"
+},
+"dragonsmash": {
+	accuracy: 90,
+	basePower: 140,
+	category: "Physical"
+	desc: "Lowers the user's Attack by 2 stages",
+	shortDesc: "Lowers the user's Atk by 2",
+	id: "dragonsmash",
+	isNonstandard: true,
+	isViable: true,
+	name: "Dragon Smash",
+	pp: 5,
+	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
+	isContact: true,
+	self: {
+		boosts: {
+			atk: -2
+		}
+	},
+	secondary: false,
+	target: "normal",
+	type: "Dragon"
+},
 "frozenfist": {
 	accuracy: 100,
 	basePower: 80,
@@ -539,6 +656,45 @@ It is in this order:
 	secondary: false,
 	target: "allySide",
 	type: "Psychic"
+},
+"hivehum": {
+	accuracy: 100,
+	basePower: 60,
+	category: "Special",
+	desc: "Has a 70% chance to lower the targets Special Defense one stage.",
+	shortDesc: "70% chance to lower the targets SpD.",
+	id: "hivehum",
+	isNonstandard: true,
+	name: "Hive Hum",
+	pp: 15,
+	priority: 0,
+	flags: {protect: 1, mirror: 1, sound: 1, authentic: 1},
+	secondary: {
+		chance: 70,
+		boosts: {
+			spd: -1
+		}
+	},
+	target: "allAdjacentFoe",
+	type: "Bug"
+},
+"hornslam": {
+	accuracy: 100,
+	basePower: 100,
+	category: "Physical",
+	desc: "This move has no additional effects",
+	shortDesc: "Has no additional effecys",
+	id: "hornslam",
+	isNonstandard: true,
+	isViable: true,
+	name: "Horn Slam",
+	pp: 10,
+	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
+	isContact: true,
+	secondary: false,
+	target: "normal",
+	type: "Bug"
 },
 "icystalagmites": {
 	accuracy: true,
@@ -739,6 +895,24 @@ It is in this order:
 	secondary: false,
 	isTarget: "normal",
 	type: "Steel"
+},
+"mirrorstriker": {
+	accuracy: 100,
+	basePower: 95,
+	category: "Special",
+	desc: "Damage is calculated using the target's Special Attack stat, including stat stage changes. The users ability and item affect the move normally.",
+	shortDesc: "Uses targets SpA stat in damage calculation.",
+	id: "mirrorstriker",
+	isNonstandard: true,
+	isViable: true,
+	name: "Mirror Striker",
+	pp: 10,
+	priority: 0,
+	flags: {protect: 1, mirror: 1},
+	useTargetOffense: true,
+	secondary: false,
+	target: "normal",
+	type: "Psychic"
 },
 "mysticwave": {
 	accuracy: 100,
@@ -1042,6 +1216,25 @@ It is in this order:
 	target: "normal",
 	type: "Ghost"
 },
+"spring": {
+	accuracy: 100,
+	basePower: 80,
+	category: "Physical",
+	desc: "If this move is successful and the user has not fainted, the user switches out even if trapped and is replaced immediately by a selected party member. The user does not switch out if there are no party members that have not fainted.",
+	shortDesc: "User switches out after damaging the target.",
+	id: "spring",
+	isNonstandard: true,
+	isViable: true,
+	name: "Spring",
+	pp: 20,
+	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
+	isContact: true,
+	selfSwitch: true,
+	secondary: false,
+	target: "normal",
+	type: "Steel"
+},
 "starsmash": {
 	accuracy: 100,
 	basePower: 80,
@@ -1066,6 +1259,41 @@ It is in this order:
 	target: "normal",
 	type: "Fairy"
 },
+"stronggust": {
+	accuracy: 100,
+	basePower: 40,
+	category: "Special",
+	desc: "If both the user and the target have not fainted, the target is forced to switch out and be replaced with a random unfainted ally.",
+	shortDesc: "Forces target to switch to a random ally.",
+	id: "stronggust",
+	isNonstandard: true,
+	isViable: true,
+	name: "Strong Gust",
+	pp: 20,
+	priority: -6,
+	flags: {protect: 1, mirror: 1},
+	forceSwitch: true,
+	target: "normal",
+	type: "Flying"
+},
+"swiftswing": {
+	accuracy: 100,
+	basepower: 40,
+	category: "Physical",
+	desc: "This move will usually go first.",
+	shortDesc: "Will usually go first.",
+	id: "swiftswing"
+	isNonstandard: true,
+	isViable: true,
+	name: "Swift Swing",
+	pp: 40
+	priority: 1,
+	flags: {contact: 1, protect: 1, mirror: 1},
+	isContact: true,
+	secondary: false,
+	target: "normal",
+	type: "Bug"
+},
 "swordslash": {
 	accuracy: 100,
 	basePower: 80,
@@ -1081,6 +1309,24 @@ It is in this order:
 	secondary: false,
 	target: "normal",
 	type: "Steel"
+},
+"syphon": {
+	accuracy: 100,
+	basePower: 75,
+	category: "Physical",
+	desc: "The user recovers 1/2 of the HP lost by the target, rounded half up.",
+	shortDesc: "The user recovers 50% of the damage dealt",
+	id: "syphon",
+	isNonstandard: true,
+	isViable: true,
+	name: "Syphon",
+	pp: 10,
+	priority: 0,
+	flags: {protect: 1, mirror: 1, heal: 1},
+	drain: [1, 2],
+	secondary: false,
+	target: "normal",
+	type: "Poison"
 },
 "tailslam": {
 	accuracy: 100,
@@ -1117,6 +1363,41 @@ It is in this order:
 	secondary: false,
 	target: "normal",
 	type: "Electric"
+},
+"tidalwave": {
+	accuracy: 100,
+	basePower: 95,
+	category: "Special",
+	desc: "This move has no additional effect.",
+	shortDesc: "Has no additional effect.",
+	id: "tidalwave",
+	isNonstandard: true,
+	isViable: true,
+	name: "Tidal Wave",
+	pp: 15,
+	priority: 0,
+	flags: {protect: 1, mirror: 1},
+	secondary: false,
+	target: "normal",
+	type: "Water"
+},
+"tornado": {
+	accuracy: 100,
+	basePower: 80,
+	category: "Special",
+	desc: "Has a higher chance for a critical hit.",
+	shortDesc: "Has a high critical hit ratio.",
+	id: "tornado",
+	isNonstandard: true,
+	isViable: true,
+	name: "Tornado",
+	pp: 15,
+	priority: 0,
+	flags: {protect: 1, mirror: 1},
+	critRatio: 2,
+	secondary: false,
+	target: "normal",
+	type: "Flying"
 },
 "tornadokick": {
 	accuracy: 95,
@@ -1155,6 +1436,25 @@ It is in this order:
 	secondary: false,
 	isTarget: "normal",
 	type: "Fighting"
+},
+"torrentialcrash": {
+	accuracy: 100,
+	basePower: 120,
+	category: "Physical",
+	desc: "The user engulfs itself in water and slams the foe. This also damages the user quite a lot.",
+	shortDesc: "Has 33% recoil.",
+	id: "torrentialcrash",
+	isNonstandard: true,
+	isViable: true,
+	name: "Torrential Crash",
+	pp: 15,
+	priority: 0,
+	flags: {contact: 1, protect: 1, mirror: 1},
+	isContact: true,
+	recoil: [33, 100],
+	secondary: false,
+	target: "normal",
+	type: "Water"
 },
 "unnaturalslice": {
 	accuracy: 100,
