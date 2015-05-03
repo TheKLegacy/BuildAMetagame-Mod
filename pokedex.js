@@ -348,9 +348,9 @@ mystook: {
 	color: "Color",
 	eggGroups: ["Undiscovered"]
 },
-swelter: {
+svelter: {
 	num: -818,
-	species: "Swelter",
+	species: "Svelter",
 	types: ["Ice", "Fire"],
 	baseStats: {
 		hp: 90,
