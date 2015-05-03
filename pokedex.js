@@ -98,9 +98,9 @@ flytrapmega: {
 	color: "color",
 	eggGroups: ["Undiscovered"]
 },
-namefour: {
+sonavia: {
 	num: -804,
-	species: "Name-Four",
+	species: "Sonavia",
 	types: ["Normal", "Flying"],
 	genderRatio: {
 		M: 0.5,
